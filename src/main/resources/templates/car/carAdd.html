@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>车辆列表</title>
+
+  <!-- Custom fonts for this template -->
+  <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+
+  <link th:href="@{/css/view.css}" rel="stylesheet">
+  <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:insert="~{commons/common::sidebar(active='carList.html')}"></div>
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+
+
+        <div th:insert="~{commons/common::topbar}"></div>
+        <!-- End of Topbar -->
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">车辆列表</h1>
+          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">车辆列表</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0">
+                  <tbody>
+                  <tr valign="top">
+                    <td>&nbsp;</td>
+                    <td id="colloaForm">
+                      <form onsubmit="return false;">
+                        <div class="textBig">登记车辆</div>
+                        <a href="http://www.baidu.com" target="_blank">点击我</a>
+                        <br>
+                        <table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" summary=""
+                               border="0">
+                          <colgroup>
+                            <col width="100">
+                            <col>
+                            <col width="100">
+                            <col width="380">
+                          </colgroup>
+                          <tbody>
+                          <tr>
+                            <td class="fieldLable"><b style="COLOR: red">*</b>名称</td>
+                            <td id="dbf.name" dbf.type="required"><input id="e.dbf.name" class="fieldEditable"></td>
+                            <td class="fieldLable"><b style="COLOR: red">*</b>牌号</td>
+                            <td id="dbf.sno" dbf.type="required"><input id="e.dbf.sno" class="fieldEditable"></td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">规格</td>
+                            <td id="dbf.specification"><input id="e.dbf.specification" class="fieldEditable"></td>
+                            <td class="fieldLable">油耗</td>
+                            <td id="dbf.text3"><input id="e.dbf.text3" class="fieldEditable"></td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">单价</td>
+                            <td id="dbf.unitPrice" dbf.type="amount"><input id="e.dbf.unitPrice"
+                                                                            class="fieldEditable textAmount" value="0"></td>
+                            <td class="fieldLable">颜色</td>
+                            <td id="dbf.text2"><input id="e.dbf.text2" class="fieldEditable"></td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">生产商</td>
+                            <td id="dbf.produceXSource"><input id="e.dbf.produceXSource" class="fieldEditable"></td>
+                            <td class="fieldLable">生产日期</td>
+                            <td id="dbf.produceXTime" dbf.type="date" dbf.source="date,editable"><img
+                                    onclick="fieldGetValueBySource('dbf.produceXTime',this);"
+                                    class="fieldGetValueBySource" src="./登记 - Colloa_files/fieldSource.gif">
+                              <div onkeypress="return event.keyCode!=13;"
+                                   onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,'');"
+                                   id="e.dbf.produceXTime" class="fieldEditable" contenteditable="true"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">供应商</td>
+                            <td id="dbf.supplyXSource"><input id="e.dbf.supplyXSource" class="fieldEditable"></td>
+                            <td class="fieldLable">采购日期</td>
+                            <td id="dbf.supplyXTime" dbf.type="date" dbf.source="date,editable"><img
+                                    onclick="fieldGetValueBySource('dbf.supplyXTime',this);"
+                                    class="fieldGetValueBySource" src="./登记 - Colloa_files/fieldSource.gif">
+                              <div onkeypress="return event.keyCode!=13;"
+                                   onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,'');"
+                                   id="e.dbf.supplyXTime" class="fieldEditable" contenteditable="true"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">发动机号</td>
+                            <td id="dbf.text0"><input id="e.dbf.text0" class="fieldEditable"></td>
+                            <td class="fieldLable">车架号</td>
+                            <td id="dbf.text1"><input id="e.dbf.text1" class="fieldEditable"></td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">存放区域</td>
+                            <td id="dbf.regionXSource"><input id="e.dbf.regionXSource" class="fieldEditable"></td>
+                            <td class="fieldLable">管理人</td>
+                            <td id="dbf.ownerXSource"><input id="e.dbf.ownerXSource" class="fieldEditable"></td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">状态</td>
+                            <td colspan="3"><input  checked="" type="radio" value="1" name="dbf.selfStatus"
+                                                   autocomplete="off"><img src="./登记 - Colloa_files/userXStatus0.png">正常
+                              <input  type="radio" value="10" name="dbf.selfStatus"
+                                     autocomplete="off"><img src="./登记 - Colloa_files/userXStatus10.png">维修 <input
+                                       type="radio" value="20" name="dbf.selfStatus"
+                                      autocomplete="off"><img src="./登记 - Colloa_files/userXStatus-1.png">报废
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">附加描述</td>
+                            <td id="dbf.description" colspan="3"><input id="e.dbf.description" class="fieldEditable"></td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">相关附件</td>
+                            <td id="dbf.memoLinks" colspan="3" dbf.source="files"><img
+                                    onclick="fieldGetValueBySource('dbf.memoLinks',this);"
+                                    class="fieldGetValueBySource" src="./登记 - Colloa_files/fieldSource.gif">
+                              <div id="e.dbf.memoLinks"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable" rowspan="6">缩略图</td>
+                            <td id="dbf.thumbnails"
+                                style="PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px"
+                                rowspan="6" dbf.source="file.image"><img
+                                    onclick="fieldGetValueBySource('dbf.thumbnails',this);"
+                                    class="fieldGetValueBySource" src="./登记 - Colloa_files/fieldSource.gif">
+                              <div id="e.dbf.thumbnails"><img class="radius" style="WIDTH: 300px" border="0"
+                                                              th:src="/img/noThumb.jpg"></div>
+
+                            </td>
+                            <td class="fieldLable">下次年检日期</td>
+                            <td id="dbf.time0" dbf.source="date,editable"><img
+                                    onclick="fieldGetValueBySource('dbf.time0',this);" class="fieldGetValueBySource"
+                                    src="./登记 - Colloa_files/fieldSource.gif">
+                              <div onkeypress="return event.keyCode!=13;"
+                                   onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,'');"
+                                   id="e.dbf.time0" class="fieldEditable" contenteditable="true"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">保险截止日期</td>
+                            <td id="dbf.time1" dbf.source="date,editable"><img
+                                    onclick="fieldGetValueBySource('dbf.time1',this);" class="fieldGetValueBySource"
+                                    src="./登记 - Colloa_files/fieldSource.gif">
+                              <div onkeypress="return event.keyCode!=13;"
+                                   onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,'');"
+                                   id="e.dbf.time1" class="fieldEditable" contenteditable="true"></div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fieldLable">上次保养日期</td>
+                            <td id="dbf.time2" dbf.source="date,editable"><img
+                                    onclick="fieldGetValueBySource('dbf.time2',this);" class="fieldGetValueBySource"
+                                    src="./登记 - Colloa_files/fieldSource.gif">
+                              <div onkeypress="return event.keyCode!=13;"
+                                   onblur="this.innerHTML=this.innerHTML.replace(/&lt;\/?.+?&gt;/g,'');"
+                                   id="e.dbf.time2" class="fieldEditable" contenteditable="true"></div>
+                            </td>
+                          </tr>
+                          <tr height="150">
+                            <td class="fieldLable">&nbsp;</td>
+                            <td>&nbsp;</td>
+                          </tr>
+                          </tbody>
+
+                        </table>
+                        <script language="javaScript">
+                          function onFileUploaded(sFieldName, sContentType, sName, sExtension, sFile, nSize) {
+                            if (sFieldName == "dbf.thumbnails") _eLastActiveEvent.parentNode.lastChild.innerHTML = "<img width=300px class=radius src='../view/file.aspx?attachment=1&name=" + encodeURIComponent(sName) + "&contentType=" + encodeURIComponent(sContentType) + "&file=" + encodeURIComponent(sFile) + "' border=0>";
+                            else onFileUploadedDefault(sFieldName, sContentType, sName, sExtension, sFile, nSize);
+                          }
+                        </script>
+                      </form>
+                      <form method="post"><input type="hidden" id="viewState" name="viewState"></form>
+                      <script language="javaScript">workflowActionsShow("okCancelWithForm");
+                      formOnLoad();</script>
+                      <br>
+                      <div id="_vWorkflowActionsStatus" style="float:left;"></div>
+                      <div id="_vWorkflowActionsShow" align="right"><a class="button" href="javascript:"
+                                                                       onclick="javaScript:workflowAction('确定',1,1);return false;">确定</a><a
+                              class="button" href="javascript:"
+                              onclick="javaScript:workflowAction('取消',0,0);return false;">取消</a></div>
+                      <br></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <div th:insert="commons/common::logoutbar"></div>
+  <!-- Bootstrap core JavaScript-->
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script th:src="@{/js/sb-admin-2.min.js}"></script>
+
+  <!-- Page level plugins -->
+  <script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
+  <script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+
+  <!-- Page level custom scripts -->
+  <script th:src="@{/js/demo/datatables-demo.js}"></script>
+
+</body>
+
+</html>

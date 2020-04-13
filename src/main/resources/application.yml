@@ -1,0 +1,92 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200GB  #设置单个上传文件的大小
+      max-request-size: 200GB  #设置一次请求上传文件的总量
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 19980606
+    url: jdbc:mysql://47.103.214.75:3306/gp?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #Spring Boot 默认是不注入这些属性值的，需要自己绑定
+    #druid 数据源专有配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+    #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+    #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+    #则导入 log4j 依赖即可，Maven 地址： https://mvnrepository.com/artifact/log4j/log4j
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  profiles: dev  # 正式上线后的版本，数据库为阿里云的
+
+mybatis:
+  type-aliases-package: com.igeek.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+upload:
+  qiniu:
+    domain: file.ddbing.cn
+    access-key: fVdWsrhbX_6yHUcsbhlGE8DIBtIRtEIASF_1542X
+    secret-key: 2W8s_8-YYVSuTn-wNfITBIA0jQZFYtqWJYkc1FbN
+    bucket: dbb
+
+---
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200GB  #设置单个上传文件的大小
+      max-request-size: 200GB  #设置一次请求上传文件的总量
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/gp?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #Spring Boot 默认是不注入这些属性值的，需要自己绑定
+    #druid 数据源专有配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+    #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+    #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+    #则导入 log4j 依赖即可，Maven 地址： https://mvnrepository.com/artifact/log4j/log4j
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  profiles: test  # 本地的版本，数据库为localhost的
+
+mybatis:
+  type-aliases-package: com.igeek.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+upload:
+  qiniu:
+    domain: file.ddbing.cn
+    access-key: fVdWsrhbX_6yHUcsbhlGE8DIBtIRtEIASF_1542X
+    secret-key: 2W8s_8-YYVSuTn-wNfITBIA0jQZFYtqWJYkc1FbN
+    bucket: dbb

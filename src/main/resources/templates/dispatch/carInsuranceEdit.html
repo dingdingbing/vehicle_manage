@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- saved from url=(0125)http://cn.colloa.com/test/view/formTaskflow.aspx?context=1028883&name=%e8%bd%a6%e8%be%86%e4%bf%9d%e9%99%a9%e7%99%bb%e8%ae%b0* -->
+<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>修改车辆保险登记信息*</title>
+    <link th:href="@{/css/view.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <style>
+        .cke {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body id="colloaBody">
+<table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0">
+    <tbody>
+    <tr valign="top">
+        <td>&nbsp;</td>
+        <td id="colloaForm">
+            <div class="formTaskflowContainer">
+                <form id="carInsuranceForm" method="post" th:action="@{/carDispatch/carInsuranceUpdate}">
+
+                    <div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>修改车辆保险登记信息</strong></span></div>
+                    <div>
+                        <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0"
+                               align="center"
+                               border="0">
+                            <colgroup>
+                                <col width="25%">
+                                <col width="25%">
+                                <col width="25%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请人</td>
+                                <td id="dbf.operator" dbf.type="required">
+                                    <input type="hidden" name="insuranceno" th:value="${insurance.getInsuranceno()}">
+                                    <input  name="applicant" th:value="${insurance.getApplicant()}" class="fieldEditable">
+                                </td>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请日期</td>
+                                <td id="dbf.time2" dbf.type="date,required" >
+                                    <input id="test1" name="applicationdate" th:value="${#dates.format(insurance.getApplicationdate(),'yyyy-MM-dd')}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>主题</td>
+                                <td id="dbf.division" dbf.type="required"  dbf.key="0">
+                                    <input  name="theme" th:value="${insurance.getTheme()}" class="fieldEditable">
+                                </td>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>车牌号</td>
+                                <td id="dbf.text0" dbf.type="required!0" dbf.key="">
+                                    <input  name="carbrand" th:value="${insurance.getCarbrand()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center">险种</td>
+                                <td style="TEXT-ALIGN: center">保费</td>
+                                <td style="TEXT-ALIGN: center">保额</td>
+                                <td style="TEXT-ALIGN: center">备注</td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >交强险</td>
+                                <td  style="TEXT-ALIGN: center" dbf.type="">
+                                    <input name="firstinsurancepremium" th:value="${insurance.getFifthinsurancepremium()}" class="fieldEditable">
+                                </td>
+                                <td  style="TEXT-ALIGN: center" dbf.type="">
+                                    <input name="firstinsuranceamount" th:value="${insurance.getFifthinsuranceamount()}" class="fieldEditable">
+                                </td>
+                                <td  style="TEXT-ALIGN: center">
+                                    <input name="firstinsuranceremarks" th:value="${insurance.getFifthinsuranceremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >车辆损失险</td>
+                                <td  style="TEXT-ALIGN: center" dbf.type="">
+                                    <input name="secondinsurancepremium" th:value="${insurance.getSecondinsurancepremium()}" class="fieldEditable">
+                                </td>
+                                <td  style="TEXT-ALIGN: center" dbf.type="">
+                                    <input name="secondinsuranceamount" th:value="${insurance.getSecondinsuranceamount()}" class="fieldEditable">
+                                </td>
+                                <td  style="TEXT-ALIGN: center">
+                                    <input name="secondinsuranceremarks" th:value="${insurance.getSecondinsuranceremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >第三者责任人险</td>
+                                <td  style="TEXT-ALIGN: center" dbf.type="">
+                                    <input name="thirdinsurancepremium" th:value="${insurance.getThirdinsurancepremium()}" class="fieldEditable">
+                                </td>
+                                <td  style="TEXT-ALIGN: center" dbf.type="">
+                                    <input name="thirdinsuranceamount" th:value="${insurance.getThirdinsuranceamount()}" class="fieldEditable">
+                                </td>
+                                <td style="TEXT-ALIGN: center" dbf.source="">
+                                    <input name="thirdinsuranceremarks" th:value="${insurance.getThirdinsuranceremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >车上人员责任保险</td>
+                                <td  style="TEXT-ALIGN: center" dbf.type="">
+                                    <input name="fourthinsurancepremium" th:value="${insurance.getFourthinsurancepremium()}" class="fieldEditable">
+                                </td>
+                                <td  style="TEXT-ALIGN: center" dbf.type="">
+                                    <input name="fourthinsuranceamount" th:value="${insurance.getFourthinsuranceamount()}"  class="fieldEditable">
+                                </td>
+                                <td  style="TEXT-ALIGN: center" dbf.source="">
+                                    <input name="fourthinsuranceremarks" th:value="${insurance.getFourthinsuranceremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >盗抢险</td>
+                                <td  style="TEXT-ALIGN: center"><input name="fifthinsurancepremium" th:value="${insurance.getFifthinsurancepremium()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center"><input name="fifthinsuranceamount" th:value="${insurance.getFifthinsuranceamount()}" class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center" dbf.source="">
+                                    <input name="fifthinsuranceremarks" th:value="${insurance.getFifthinsuranceremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >划痕险</td>
+                                <td  style="TEXT-ALIGN: center"><input name="sixthinsurancepremium" th:value="${insurance.getSixthinsurancepremium()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center"><input name="sixthinsuranceamount" th:value="${insurance.getSixthinsuranceamount()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center" dbf.source="">
+                                    <input name="sixthinsuranceremarks" th:value="${insurance.getSixthinsuranceremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >玻璃单独破碎险</td>
+                                <td  style="TEXT-ALIGN: center"><input name="seventhinsurancepremium" th:value="${insurance.getSeventhinsurancepremium()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center"><input name="seventhinsuranceamount" th:value="${insurance.getSeventhinsuranceamount()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center" dbf.source="">
+                                    <input name="seventhinsuranceremarks" th:value="${insurance.getSeventhinsuranceremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >自燃险</td>
+                                <td  style="TEXT-ALIGN: center"><input name="eighthinsurancepremium" th:value="${insurance.getEighthinsurancepremium()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center"><input name="eighthinsuranceamount" th:value="${insurance.getEighthinsuranceamount()}" class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center" dbf.source="">
+                                    <input name="eighthinsuranceremarks" th:value="${insurance.getEighthinsuranceremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >指定专修厂</td>
+                                <td  style="TEXT-ALIGN: center"><input name="repairshoppremium" th:value="${insurance.getRepairshoppremium()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center"><input name="repairshopamount" th:value="${insurance.getRepairshopamount()}" class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center" dbf.source="">
+                                    <input name="repairshopremarks" th:value="${insurance.getRepairshopremarks()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input  type="checkbox" value="1" >不计免赔(责任免除)</td>
+                                <td  style="TEXT-ALIGN: center"><input name="excludingdeductiblepremium" th:value="${insurance.getExcludingdeductiblepremium()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center"><input name="excludingdeductibleamount" th:value="${insurance.getExcludingdeductibleamount()}"  class="fieldEditable"></td>
+                                <td  style="TEXT-ALIGN: center" dbf.source="">
+                                    <input name="excludingdeductibleremarks" th:value="${insurance.getExcludingdeductibleremarks()}"  class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>投保公司</td>
+                                <td id="dbf.text2" style="TEXT-ALIGN: center" dbf.type="required">
+                                    <input id="e.dbf.text2" name="insurancecompany" th:value="${insurance.getInsurancecompany()}" class="fieldEditable">
+                                </td>
+                                <td style="TEXT-ALIGN: center">投保电话</td>
+                                <td id="投保电话" style="TEXT-ALIGN: center" >
+                                    <input id="e.投保电话" name="insurancecall"  th:value="${insurance.getInsurancecall()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>保险有效期</td>
+                                <td id="dbf.time0" style="TEXT-ALIGN: center" dbf.type="date,required">
+                                    <input id="test2" name="insuranceperiodstart" th:value="${#dates.format(insurance.getInsuranceperiodstart(),'yyyy-MM-dd')}" class="fieldEditable">
+                                </td>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>至</td>
+                                <td id="dbf.time1" style="TEXT-ALIGN: center" dbf.type="date,required">
+                                    <input id="test3" name="insuranceperiodend" th:value="${#dates.format(insurance.getInsuranceperiodend(),'yyyy-MM-dd')}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>投保总费用(元)
+                                    <input onclick=""
+                                        id="=" type="button" value="=" name="="></td>
+                                <td id="dbf.budget" style="TEXT-ALIGN: center" dbf.type="amount,required" dbf.source="">
+                                    <input id="e.dbf.budget" name="totalcost" class="fieldEditable textAmount"  th:value="${insurance.getTotalcost()==null?0:insurance.getTotalcost()}">
+                                </td>
+                                <td style="TEXT-ALIGN: center">经办人</td>
+                                <td id="dbf.text1" style="TEXT-ALIGN: center" dbf.type="" dbf.source="">
+                                    <input id="e.dbf.text1" name="chargeperson" th:value="${insurance.getChargeperson()}" class="fieldEditable">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>&nbsp;</div>
+                    <table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center"
+                           border="0">
+                        <colgroup>
+                            <col width="60">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td style="TEXT-ALIGN: right">附件:</td>
+                            <td id="attachments" dbf.source="files">
+                                <input type="hidden" name="enclosure" id="url_test">
+                                <input id="enclosureId1" type="hidden"  name="filename"><a id="enclosureId" target="_blank" th:text="${insurance.getFilename()}" th:href="${#strings.isEmpty(insurance.getEnclosure())?'':'http://'+insurance.getEnclosure()}" ></a>
+                                <button type="button" class="layui-btn-sm" id="upload" style="float: right">
+                                    上传附件
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <form method="post"><input type="hidden" id="viewState" name="viewState"></form>
+            <br>
+            <div id="_vWorkflowActionsStatus" style="float:left;"></div>
+            <div id="_vWorkflowActionsShow" align="right">
+                <a id="submitBtn" class="button" style="cursor: pointer;" >确定</a>
+                <a id="cancelBtn" class="button" style="cursor: pointer;" >取消</a>
+            </div>
+            <br>
+            <br>
+
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['form','layer','jquery','upload','laydate'],function(){
+        form = layui.form;
+        layer = layui.layer;
+        $ = layui.jquery;
+        upload = layui.upload;
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#test1',
+        });
+
+        datemax=new Date();
+        laydate.render({
+            elem: '#test2'
+        });
+        laydate.render({
+            elem: '#test3'
+        });
+
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: '/upload' //上传接口
+            ,accept: 'file'
+            ,before:function(obj){
+                obj.preview(function(index, file, result){
+                    $("#enclosureId").text(file.name);
+                    $("#enclosureId1").val(file.name);
+                    console.log(index+" "+file.name+" "+result);
+                });
+            }
+            ,done: function(res){
+                //上传完毕回调
+                if (res.code == 0) {
+                    layer.msg("文件上传成功", {icon: 1});
+                    console.log(res.data);
+                    //$("#imgs").append("<img src=http://"+res.data+" width='300px' height='225px' style='margin-left: 8px'>");
+                    $("#enclosureId").attr("href","http://"+res.data);
+                    $("#enclosureId").click(function () {
+                        window.open("http://"+res.data);
+                    });
+                    $("#url_test").val(res.data);
+                } else {
+                    layer.msg("文件上传失败", {icon: 2});
+                }
+            }
+            ,error: function(){
+                //请求异常回调
+
+            }
+        });
+        $(function () {
+            $("input").attr("autocomplete","off");
+        });
+
+        $("#submitBtn").click(function () {
+            if(confirm("是否提交表单")){
+                $("#carInsuranceForm").submit();
+                console.log("表单提交了？")
+            }
+        });
+        $("#cancelBtn").click(function () {
+            if(confirm("是否取消提交表单，并关闭该页面")){
+                window.opener=null;
+                window.open('','_self');
+                window.close();
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>
+</body>
+</html>

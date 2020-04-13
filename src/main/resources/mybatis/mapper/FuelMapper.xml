@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.igeek.mapper.FuelMapper" >
+  <resultMap id="BaseResultMap" type="com.igeek.pojo.Fuel" >
+    <id column="registrationNumber" property="registrationnumber" jdbcType="INTEGER" />
+    <result column="applicant" property="applicant" jdbcType="VARCHAR" />
+    <result column="applicationDate" property="applicationdate" jdbcType="DATE" />
+    <result column="carBrand" property="carbrand" jdbcType="VARCHAR" />
+    <result column="refuelingDate" property="refuelingdate" jdbcType="DATE" />
+    <result column="refuelingCapacity" property="refuelingcapacity" jdbcType="DECIMAL" />
+    <result column="fuelAmount" property="fuelamount" jdbcType="DECIMAL" />
+    <result column="chargePerson" property="chargeperson" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="voucher" property="voucher" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    registrationNumber, applicant, applicationDate, carBrand, refuelingDate, refuelingCapacity, 
+    fuelAmount, chargePerson, remarks, voucher
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.igeek.pojo.example.FuelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fuel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fuel
+    where registrationNumber = #{registrationnumber,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fuel
+    where registrationNumber = #{registrationnumber,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.igeek.pojo.example.FuelExample" >
+    delete from fuel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.igeek.pojo.Fuel" >
+    insert into fuel (registrationNumber, applicant, applicationDate, 
+      carBrand, refuelingDate, refuelingCapacity, 
+      fuelAmount, chargePerson, remarks, 
+      voucher)
+    values (#{registrationnumber,jdbcType=INTEGER}, #{applicant,jdbcType=VARCHAR}, #{applicationdate,jdbcType=DATE}, 
+      #{carbrand,jdbcType=VARCHAR}, #{refuelingdate,jdbcType=DATE}, #{refuelingcapacity,jdbcType=DECIMAL}, 
+      #{fuelamount,jdbcType=DECIMAL}, #{chargeperson,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{voucher,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.igeek.pojo.Fuel" >
+    insert into fuel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="registrationnumber != null" >
+        registrationNumber,
+      </if>
+      <if test="applicant != null" >
+        applicant,
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate,
+      </if>
+      <if test="carbrand != null" >
+        carBrand,
+      </if>
+      <if test="refuelingdate != null" >
+        refuelingDate,
+      </if>
+      <if test="refuelingcapacity != null" >
+        refuelingCapacity,
+      </if>
+      <if test="fuelamount != null" >
+        fuelAmount,
+      </if>
+      <if test="chargeperson != null" >
+        chargePerson,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="voucher != null" >
+        voucher,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="registrationnumber != null" >
+        #{registrationnumber,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null" >
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="carbrand != null" >
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="refuelingdate != null" >
+        #{refuelingdate,jdbcType=DATE},
+      </if>
+      <if test="refuelingcapacity != null" >
+        #{refuelingcapacity,jdbcType=DECIMAL},
+      </if>
+      <if test="fuelamount != null" >
+        #{fuelamount,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeperson != null" >
+        #{chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="voucher != null" >
+        #{voucher,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.igeek.pojo.example.FuelExample" resultType="java.lang.Integer" >
+    select count(*) from fuel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update fuel
+    <set >
+      <if test="record.registrationnumber != null" >
+        registrationNumber = #{record.registrationnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.applicant != null" >
+        applicant = #{record.applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationdate != null" >
+        applicationDate = #{record.applicationdate,jdbcType=DATE},
+      </if>
+      <if test="record.carbrand != null" >
+        carBrand = #{record.carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refuelingdate != null" >
+        refuelingDate = #{record.refuelingdate,jdbcType=DATE},
+      </if>
+      <if test="record.refuelingcapacity != null" >
+        refuelingCapacity = #{record.refuelingcapacity,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fuelamount != null" >
+        fuelAmount = #{record.fuelamount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.chargeperson != null" >
+        chargePerson = #{record.chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.voucher != null" >
+        voucher = #{record.voucher,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update fuel
+    set registrationNumber = #{record.registrationnumber,jdbcType=INTEGER},
+      applicant = #{record.applicant,jdbcType=VARCHAR},
+      applicationDate = #{record.applicationdate,jdbcType=DATE},
+      carBrand = #{record.carbrand,jdbcType=VARCHAR},
+      refuelingDate = #{record.refuelingdate,jdbcType=DATE},
+      refuelingCapacity = #{record.refuelingcapacity,jdbcType=DECIMAL},
+      fuelAmount = #{record.fuelamount,jdbcType=DECIMAL},
+      chargePerson = #{record.chargeperson,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      voucher = #{record.voucher,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.pojo.Fuel" >
+    update fuel
+    <set >
+      <if test="applicant != null" >
+        applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate = #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="carbrand != null" >
+        carBrand = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="refuelingdate != null" >
+        refuelingDate = #{refuelingdate,jdbcType=DATE},
+      </if>
+      <if test="refuelingcapacity != null" >
+        refuelingCapacity = #{refuelingcapacity,jdbcType=DECIMAL},
+      </if>
+      <if test="fuelamount != null" >
+        fuelAmount = #{fuelamount,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeperson != null" >
+        chargePerson = #{chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="voucher != null" >
+        voucher = #{voucher,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where registrationNumber = #{registrationnumber,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.igeek.pojo.Fuel" >
+    update fuel
+    set applicant = #{applicant,jdbcType=VARCHAR},
+      applicationDate = #{applicationdate,jdbcType=DATE},
+      carBrand = #{carbrand,jdbcType=VARCHAR},
+      refuelingDate = #{refuelingdate,jdbcType=DATE},
+      refuelingCapacity = #{refuelingcapacity,jdbcType=DECIMAL},
+      fuelAmount = #{fuelamount,jdbcType=DECIMAL},
+      chargePerson = #{chargeperson,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      voucher = #{voucher,jdbcType=VARCHAR}
+    where registrationNumber = #{registrationnumber,jdbcType=INTEGER}
+  </update>
+</mapper>

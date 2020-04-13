@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.igeek.mapper.MaintainMapper" >
+  <resultMap id="BaseResultMap" type="com.igeek.pojo.Maintain" >
+    <id column="maintainNo" property="maintainno" jdbcType="INTEGER" />
+    <result column="applicant" property="applicant" jdbcType="VARCHAR" />
+    <result column="applicationDate" property="applicationdate" jdbcType="DATE" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="carBrand" property="carbrand" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="maintenanceCompany" property="maintenancecompany" jdbcType="VARCHAR" />
+    <result column="cost" property="cost" jdbcType="DECIMAL" />
+    <result column="chargePerson" property="chargeperson" jdbcType="VARCHAR" />
+    <result column="startMaintainDate" property="startmaintaindate" jdbcType="DATE" />
+    <result column="endMaintainDate" property="endmaintaindate" jdbcType="DATE" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="enclosure" property="enclosure" jdbcType="VARCHAR" />
+    <result column="filename" property="filename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    maintainNo, applicant, applicationDate, theme, carBrand, type, maintenanceCompany, 
+    cost, chargePerson, startMaintainDate, endMaintainDate, content, remarks, enclosure, 
+    filename
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.igeek.pojo.example.MaintainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from maintain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from maintain
+    where maintainNo = #{maintainno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from maintain
+    where maintainNo = #{maintainno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.igeek.pojo.example.MaintainExample" >
+    delete from maintain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.igeek.pojo.Maintain" >
+    insert into maintain (maintainNo, applicant, applicationDate, 
+      theme, carBrand, type, 
+      maintenanceCompany, cost, chargePerson, 
+      startMaintainDate, endMaintainDate, content, 
+      remarks, enclosure, filename
+      )
+    values (#{maintainno,jdbcType=INTEGER}, #{applicant,jdbcType=VARCHAR}, #{applicationdate,jdbcType=DATE}, 
+      #{theme,jdbcType=VARCHAR}, #{carbrand,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{maintenancecompany,jdbcType=VARCHAR}, #{cost,jdbcType=DECIMAL}, #{chargeperson,jdbcType=VARCHAR}, 
+      #{startmaintaindate,jdbcType=DATE}, #{endmaintaindate,jdbcType=DATE}, #{content,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{enclosure,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.igeek.pojo.Maintain" >
+    insert into maintain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="maintainno != null" >
+        maintainNo,
+      </if>
+      <if test="applicant != null" >
+        applicant,
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="carbrand != null" >
+        carBrand,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="maintenancecompany != null" >
+        maintenanceCompany,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="chargeperson != null" >
+        chargePerson,
+      </if>
+      <if test="startmaintaindate != null" >
+        startMaintainDate,
+      </if>
+      <if test="endmaintaindate != null" >
+        endMaintainDate,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="enclosure != null" >
+        enclosure,
+      </if>
+      <if test="filename != null" >
+        filename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="maintainno != null" >
+        #{maintainno,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null" >
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null" >
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="maintenancecompany != null" >
+        #{maintenancecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeperson != null" >
+        #{chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="startmaintaindate != null" >
+        #{startmaintaindate,jdbcType=DATE},
+      </if>
+      <if test="endmaintaindate != null" >
+        #{endmaintaindate,jdbcType=DATE},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null" >
+        #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.igeek.pojo.example.MaintainExample" resultType="java.lang.Integer" >
+    select count(*) from maintain
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update maintain
+    <set >
+      <if test="record.maintainno != null" >
+        maintainNo = #{record.maintainno,jdbcType=INTEGER},
+      </if>
+      <if test="record.applicant != null" >
+        applicant = #{record.applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationdate != null" >
+        applicationDate = #{record.applicationdate,jdbcType=DATE},
+      </if>
+      <if test="record.theme != null" >
+        theme = #{record.theme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carbrand != null" >
+        carBrand = #{record.carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.maintenancecompany != null" >
+        maintenanceCompany = #{record.maintenancecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cost != null" >
+        cost = #{record.cost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.chargeperson != null" >
+        chargePerson = #{record.chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startmaintaindate != null" >
+        startMaintainDate = #{record.startmaintaindate,jdbcType=DATE},
+      </if>
+      <if test="record.endmaintaindate != null" >
+        endMaintainDate = #{record.endmaintaindate,jdbcType=DATE},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enclosure != null" >
+        enclosure = #{record.enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filename != null" >
+        filename = #{record.filename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update maintain
+    set maintainNo = #{record.maintainno,jdbcType=INTEGER},
+      applicant = #{record.applicant,jdbcType=VARCHAR},
+      applicationDate = #{record.applicationdate,jdbcType=DATE},
+      theme = #{record.theme,jdbcType=VARCHAR},
+      carBrand = #{record.carbrand,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      maintenanceCompany = #{record.maintenancecompany,jdbcType=VARCHAR},
+      cost = #{record.cost,jdbcType=DECIMAL},
+      chargePerson = #{record.chargeperson,jdbcType=VARCHAR},
+      startMaintainDate = #{record.startmaintaindate,jdbcType=DATE},
+      endMaintainDate = #{record.endmaintaindate,jdbcType=DATE},
+      content = #{record.content,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      enclosure = #{record.enclosure,jdbcType=VARCHAR},
+      filename = #{record.filename,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.pojo.Maintain" >
+    update maintain
+    <set >
+      <if test="applicant != null" >
+        applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate = #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null" >
+        carBrand = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="maintenancecompany != null" >
+        maintenanceCompany = #{maintenancecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeperson != null" >
+        chargePerson = #{chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="startmaintaindate != null" >
+        startMaintainDate = #{startmaintaindate,jdbcType=DATE},
+      </if>
+      <if test="endmaintaindate != null" >
+        endMaintainDate = #{endmaintaindate,jdbcType=DATE},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null" >
+        enclosure = #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where maintainNo = #{maintainno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.igeek.pojo.Maintain" >
+    update maintain
+    set applicant = #{applicant,jdbcType=VARCHAR},
+      applicationDate = #{applicationdate,jdbcType=DATE},
+      theme = #{theme,jdbcType=VARCHAR},
+      carBrand = #{carbrand,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      maintenanceCompany = #{maintenancecompany,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=DECIMAL},
+      chargePerson = #{chargeperson,jdbcType=VARCHAR},
+      startMaintainDate = #{startmaintaindate,jdbcType=DATE},
+      endMaintainDate = #{endmaintaindate,jdbcType=DATE},
+      content = #{content,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      enclosure = #{enclosure,jdbcType=VARCHAR},
+      filename = #{filename,jdbcType=VARCHAR}
+    where maintainNo = #{maintainno,jdbcType=INTEGER}
+  </update>
+</mapper>

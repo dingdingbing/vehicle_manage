@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)http://cn.colloa.com/test/view/workflowForm.aspx?context=1028900&name=%e7%99%bb%e8%ae%b0 -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>登记车辆</title>
+
+    <link th:href="@{/css/view.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+
+    <!--<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
+
+    <!--<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">-->
+    <style>
+        .cke {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body id="colloaBody">
+<table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0">
+    <tbody>
+    <tr valign="top">
+        <td>&nbsp;</td>
+        <td id="colloaForm">
+            <form th:action="@{/car/add}" id="carRegisterForm" method="post">
+                <div class="textBig">登记车辆</div>
+                <br>
+                <table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" summary=""
+                       border="0">
+                    <colgroup>
+                        <col width="100">
+                        <col>
+                        <col width="100">
+                        <col width="380">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td class="fieldLable"><b style="COLOR: red">*</b>名称</td>
+                        <td id="dbf.name" dbf.type="required"><input id="carname" type="text" name="carname" class="fieldEditable"></td>
+                        <td class="fieldLable"><b style="COLOR: red">*</b>牌号</td>
+                        <td id="dbf.sno" dbf.type="required"><input id="carbrand" type="text" name="carbrand" class="fieldEditable"></td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">规格</td>
+                        <td id="dbf.specification"><input id="e.dbf.specification" name="carspecs" class="fieldEditable"></td>
+                        <td class="fieldLable">油耗</td>
+                        <td id="dbf.text3"><input id="e.dbf.text3" name="fuel" class="fieldEditable"></td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">单价</td>
+                        <td id="dbf.unitPrice" dbf.type="amount"><input id="e.dbf.unitPrice" name="price"
+                                                                        class="fieldEditable textAmount" value="0"></td>
+                        <td class="fieldLable">颜色</td>
+                        <td id="dbf.text2"><input id="e.dbf.text2" name="color" class="fieldEditable"></td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">生产商</td>
+                        <td id="dbf.produceXSource"><input id="e.dbf.produceXSource" name="manufacturer" class="fieldEditable"></td>
+                        <td class="fieldLable">生产日期</td>
+                        <td id="dbf.produceXTime" dbf.type="date" dbf.source="date,editable">
+                            <input id="test1" name="productiondate" class="fieldEditable">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">供应商</td>
+                        <td id="dbf.supplyXSource"><input id="e.dbf.supplyXSource" name="supplier" class="fieldEditable"></td>
+                        <td class="fieldLable">采购日期</td>
+                        <td id="dbf.supplyXTime" dbf.type="date" dbf.source="date,editable">
+                            <input id="test2" name="purchasedate" class="fieldEditable">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">发动机号</td>
+                        <td id="dbf.text0"><input id="e.dbf.text0" name="engineno" class="fieldEditable"></td>
+                        <td class="fieldLable">车架号</td>
+                        <td id="dbf.text1"><input id="e.dbf.text1" name="frameno" class="fieldEditable"></td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">存放区域</td>
+                        <td id="dbf.regionXSource"><input id="e.dbf.regionXSource" name="storage" class="fieldEditable"></td>
+                        <td class="fieldLable">管理人</td>
+                        <td id="dbf.ownerXSource"><input id="e.dbf.ownerXSource" name="manager" class="fieldEditable"></td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">状态</td>
+                        <td colspan="3">
+                            <input checked="" type="radio" value="1" name="status" autocomplete="off">
+                            <img th:src="@{/img/userXStatus0.png}">正常
+                            <input type="radio" value="10" name="status" autocomplete="off">
+                            <img th:src="@{/img/userXStatus10.png}">维修
+                            <input type="radio" value="20" name="status" autocomplete="off">
+                            <img th:src="@{/img/userXStatus-1.png}">报废
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable" rowspan="6">缩略图</td>
+                        <td id="dbf.thumbnails" style="PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px" rowspan="6" dbf.source="file.image">
+                            <div id="e.dbf.thumbnails">
+                                <img class="radius" style="WIDTH: 300px;height: 225px" border="0" id="imgs" th:src="@{/img/noThumb.jpg}" >
+                            </div>
+                                <input type="hidden" name="url" id="url_test">
+                                <br>
+                                <button type="button" class="layui-btn-sm" id="upload">
+                                    <i class="layui-icon">&#xe67c;</i>上传图片
+                                </button>
+                            </div>
+                        </td>
+                        <td class="fieldLable">下次年检日期</td>
+                        <td id="dbf.time0" dbf.source="date,editable">
+                            <input id="test3" name="nextannualinspectiondate" class="fieldEditable">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">保险截止日期</td>
+                        <td id="dbf.time1" dbf.source="date,editable">
+                            <input id="test4" name="insurancedeadline" class="fieldEditable">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fieldLable">上次保养日期</td>
+                        <td id="dbf.time2" dbf.source="date,editable">
+                            <input id="test5" name="lastservicedate" class="fieldEditable">
+                        </td>
+                    </tr>
+                    <tr height="150">
+                        <td class="fieldLable">&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+            <br>
+            <div id="_vWorkflowActionsStatus" style="float:left;"></div>
+            <div id="_vWorkflowActionsShow" align="right">
+                <a id="subBtn" class="button" style="cursor: pointer;" >确定</a>
+                <a id="cancelBtn" class="button" style="cursor: pointer;" >取消</a>
+            </div>
+            <br>
+            </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/jquery/jquery.validate.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+
+
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['form','layer','jquery','upload','laydate'],function(){
+        form = layui.form;
+        layer = layui.layer;
+        $ = layui.jquery;
+        upload = layui.upload;
+        var laydate = layui.laydate;
+
+        datemax=new Date();
+        laydate.render({
+            elem: '#test1',
+            max:'datemax'
+        });
+
+        laydate.render({
+            elem: '#test2',
+            max:'datemax'
+        });
+
+        laydate.render({
+            elem: '#test3',
+            min:'datemax'
+        });
+
+        laydate.render({
+            elem: '#test4',
+            max:'datemax'
+        });
+
+        laydate.render({
+            elem: '#test5',
+            max:'datemax'
+        });
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: '/upload' //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                if (res.code == 0) {
+                    layer.msg("文件上传成功", {icon: 1});
+                    console.log(res.data);
+                    //$("#imgs").append("<img src=http://"+res.data+" width='300px' height='225px' style='margin-left: 8px'>");
+                    $("#imgs").attr("src","http://"+res.data);
+                    $("#imgs").click(function () {
+                        window.open("http://"+res.data);
+                    });
+                    $("#url_test").val(res.data);
+                } else {
+                    layer.msg("文件上传失败", {icon: 2});
+                }
+            }
+            ,error: function(){
+                //请求异常回调
+
+            }
+        });
+
+        $(function () {
+            $("input").attr("autocomplete","off");
+        });
+
+        $("#subBtn").click(function () {
+            if(confirm("是否提交表单")){
+                $("#carRegisterForm").submit();
+            }
+        });
+    });
+    /*function submitForm() {
+        if(confirm("是否提交表单")){
+            return true;
+        }else{
+            return false;
+        }
+    }*/
+</script>
+
+
+<script type="text/javascript" >
+    $.validator.setDefaults({
+        // debug:false,
+        showErrors: function(map, list) {
+            // there's probably a way to simplify this
+            /*var focussed = document.activeElement;
+            if (focussed && $(focussed).is("input, textarea")) {
+            $(this.currentForm).tooltip("close", { currentTarget: focussed }, true);
+            }*/
+            this.currentElements.removeAttr("title").removeClass("ui-state-highlight").removeClass("error");
+
+            $.each(list, function(index, error) {
+                $(error.element)
+                    .attr("title", error.message).addClass("ui-state-highlight").addClass("error");
+                $(error.element).tooltip({
+                    openn:true,
+                    position: {
+                        my: "left top",
+                        at: "right+5 top-5"
+                    }
+                });
+                //$(error.element).after('<div class="validatebox-tip" style="display:block;left:164px;top:165px;"><span class="validatebox-tip-content" >test<span></div>');
+            });
+            /*if (focussed && $(focussed).is("input, textarea")) {
+                $(this.currentForm).tooltip("open", { target: focussed });
+            }*/
+        }
+    });
+    $("#carRegisterForm").validate({
+        rules:{
+            carname:{
+                required:true
+            },
+            carbrand:{
+                required:true,
+
+            }
+        },
+        messages:{
+            carname:{required:"车的名称不能为空"},
+            carbrand:{required:"车牌不能为空"}
+
+        },
+        submitHandler: function (form) {
+            //验证通过后进行注册
+            form.submit();
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.igeek.mapper.UserMapper">
+   <select id="selectByName" resultType="user" parameterType="String">
+       select * from user where username=#{username};
+   </select>
+    <insert id="registerUser"  parameterType="user">
+        insert into user (userid,username,password,sex,address) values (null,#{username},#{password},#{sex},#{address})
+    </insert>
+    <select id="selectPerById" resultType="string" parameterType="Integer">
+        select percode from permission p,
+        (select  perid from role_permission rp,
+        (select roleid from user_role where userid=#{userid}) role where role.roleid=rp.roleid) rpp where p.perid=rpp.perid
+    </select>
+</mapper>

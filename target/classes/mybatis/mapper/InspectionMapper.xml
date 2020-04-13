@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.igeek.mapper.InspectionMapper" >
+  <resultMap id="BaseResultMap" type="com.igeek.pojo.Inspection" >
+    <id column="inspectionNo" property="inspectionno" jdbcType="INTEGER" />
+    <result column="applicant" property="applicant" jdbcType="VARCHAR" />
+    <result column="applicationDate" property="applicationdate" jdbcType="DATE" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="carBrand" property="carbrand" jdbcType="VARCHAR" />
+    <result column="inspectionPlace" property="inspectionplace" jdbcType="VARCHAR" />
+    <result column="phoneNumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="cost" property="cost" jdbcType="DECIMAL" />
+    <result column="chargePerson" property="chargeperson" jdbcType="VARCHAR" />
+    <result column="thisInspectionDate" property="thisinspectiondate" jdbcType="DATE" />
+    <result column="nextInspectionDate" property="nextinspectiondate" jdbcType="DATE" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="enclosure" property="enclosure" jdbcType="VARCHAR" />
+    <result column="filename" property="filename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    inspectionNo, applicant, applicationDate, theme, carBrand, inspectionPlace, phoneNumber, 
+    cost, chargePerson, thisInspectionDate, nextInspectionDate, remarks, enclosure, filename
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.igeek.pojo.example.InspectionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from inspection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from inspection
+    where inspectionNo = #{inspectionno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inspection
+    where inspectionNo = #{inspectionno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.igeek.pojo.example.InspectionExample" >
+    delete from inspection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.igeek.pojo.Inspection" >
+    insert into inspection (inspectionNo, applicant, applicationDate, 
+      theme, carBrand, inspectionPlace, 
+      phoneNumber, cost, chargePerson, 
+      thisInspectionDate, nextInspectionDate, remarks, 
+      enclosure, filename)
+    values (#{inspectionno,jdbcType=INTEGER}, #{applicant,jdbcType=VARCHAR}, #{applicationdate,jdbcType=DATE}, 
+      #{theme,jdbcType=VARCHAR}, #{carbrand,jdbcType=VARCHAR}, #{inspectionplace,jdbcType=VARCHAR}, 
+      #{phonenumber,jdbcType=VARCHAR}, #{cost,jdbcType=DECIMAL}, #{chargeperson,jdbcType=VARCHAR}, 
+      #{thisinspectiondate,jdbcType=DATE}, #{nextinspectiondate,jdbcType=DATE}, #{remarks,jdbcType=VARCHAR}, 
+      #{enclosure,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.igeek.pojo.Inspection" >
+    insert into inspection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inspectionno != null" >
+        inspectionNo,
+      </if>
+      <if test="applicant != null" >
+        applicant,
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="carbrand != null" >
+        carBrand,
+      </if>
+      <if test="inspectionplace != null" >
+        inspectionPlace,
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="chargeperson != null" >
+        chargePerson,
+      </if>
+      <if test="thisinspectiondate != null" >
+        thisInspectionDate,
+      </if>
+      <if test="nextinspectiondate != null" >
+        nextInspectionDate,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="enclosure != null" >
+        enclosure,
+      </if>
+      <if test="filename != null" >
+        filename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inspectionno != null" >
+        #{inspectionno,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null" >
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null" >
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionplace != null" >
+        #{inspectionplace,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeperson != null" >
+        #{chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="thisinspectiondate != null" >
+        #{thisinspectiondate,jdbcType=DATE},
+      </if>
+      <if test="nextinspectiondate != null" >
+        #{nextinspectiondate,jdbcType=DATE},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null" >
+        #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.igeek.pojo.example.InspectionExample" resultType="java.lang.Integer" >
+    select count(*) from inspection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update inspection
+    <set >
+      <if test="record.inspectionno != null" >
+        inspectionNo = #{record.inspectionno,jdbcType=INTEGER},
+      </if>
+      <if test="record.applicant != null" >
+        applicant = #{record.applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationdate != null" >
+        applicationDate = #{record.applicationdate,jdbcType=DATE},
+      </if>
+      <if test="record.theme != null" >
+        theme = #{record.theme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carbrand != null" >
+        carBrand = #{record.carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inspectionplace != null" >
+        inspectionPlace = #{record.inspectionplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonenumber != null" >
+        phoneNumber = #{record.phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cost != null" >
+        cost = #{record.cost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.chargeperson != null" >
+        chargePerson = #{record.chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thisinspectiondate != null" >
+        thisInspectionDate = #{record.thisinspectiondate,jdbcType=DATE},
+      </if>
+      <if test="record.nextinspectiondate != null" >
+        nextInspectionDate = #{record.nextinspectiondate,jdbcType=DATE},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enclosure != null" >
+        enclosure = #{record.enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filename != null" >
+        filename = #{record.filename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update inspection
+    set inspectionNo = #{record.inspectionno,jdbcType=INTEGER},
+      applicant = #{record.applicant,jdbcType=VARCHAR},
+      applicationDate = #{record.applicationdate,jdbcType=DATE},
+      theme = #{record.theme,jdbcType=VARCHAR},
+      carBrand = #{record.carbrand,jdbcType=VARCHAR},
+      inspectionPlace = #{record.inspectionplace,jdbcType=VARCHAR},
+      phoneNumber = #{record.phonenumber,jdbcType=VARCHAR},
+      cost = #{record.cost,jdbcType=DECIMAL},
+      chargePerson = #{record.chargeperson,jdbcType=VARCHAR},
+      thisInspectionDate = #{record.thisinspectiondate,jdbcType=DATE},
+      nextInspectionDate = #{record.nextinspectiondate,jdbcType=DATE},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      enclosure = #{record.enclosure,jdbcType=VARCHAR},
+      filename = #{record.filename,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.pojo.Inspection" >
+    update inspection
+    <set >
+      <if test="applicant != null" >
+        applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate = #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null" >
+        carBrand = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionplace != null" >
+        inspectionPlace = #{inspectionplace,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeperson != null" >
+        chargePerson = #{chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="thisinspectiondate != null" >
+        thisInspectionDate = #{thisinspectiondate,jdbcType=DATE},
+      </if>
+      <if test="nextinspectiondate != null" >
+        nextInspectionDate = #{nextinspectiondate,jdbcType=DATE},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null" >
+        enclosure = #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where inspectionNo = #{inspectionno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.igeek.pojo.Inspection" >
+    update inspection
+    set applicant = #{applicant,jdbcType=VARCHAR},
+      applicationDate = #{applicationdate,jdbcType=DATE},
+      theme = #{theme,jdbcType=VARCHAR},
+      carBrand = #{carbrand,jdbcType=VARCHAR},
+      inspectionPlace = #{inspectionplace,jdbcType=VARCHAR},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=DECIMAL},
+      chargePerson = #{chargeperson,jdbcType=VARCHAR},
+      thisInspectionDate = #{thisinspectiondate,jdbcType=DATE},
+      nextInspectionDate = #{nextinspectiondate,jdbcType=DATE},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      enclosure = #{enclosure,jdbcType=VARCHAR},
+      filename = #{filename,jdbcType=VARCHAR}
+    where inspectionNo = #{inspectionno,jdbcType=INTEGER}
+  </update>
+</mapper>

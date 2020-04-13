@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>车辆管理系统注册页面</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+              </div>
+              <form class="user" id="registerForm" method="post" action="/register">
+                <div class="form-group row">
+
+                    <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Username">
+
+                </div>
+
+                <div class="form-group row">
+                <div class="btn-group  btn-group-lg" data-toggle="buttons">
+
+                  <label class="btn  active">
+                    <input type="radio" name="sex" value="0" id="option1" checked> male
+                  </label>
+                  <label class="btn">
+                    <input type="radio" name="sex" value="1" id="option2"> female
+                  </label>
+                </div>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" name="address" id="address" placeholder="Address">
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password">
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control form-control-user" name="final_password" id="final_password" placeholder="Repeat Password">
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-primary btn-user btn-block" value=" Register Account " >
+                <hr>
+                <a href="index.html" class="btn btn-google btn-user btn-block">
+                  <i class="fab fa-google fa-fw"></i> Register with Google
+                </a>
+                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                </a>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small" href="forgot-password.html">Forgot Password?</a>
+              </div>
+              <div class="text-center">
+                <a class="small" href="login.html">Already have an account? Login!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/js/sb-admin-2.min.js"></script>
+
+  <script src="/vendor/jquery/jquery.validate.js"></script>
+
+  <script type="text/javascript" >
+    $.validator.setDefaults({
+      showErrors: function(map, list) {
+        // there's probably a way to simplify this
+        /*var focussed = document.activeElement;
+        if (focussed && $(focussed).is("input, textarea")) {
+        $(this.currentForm).tooltip("close", { currentTarget: focussed }, true);
+        }*/
+        this.currentElements.removeAttr("title").removeClass("ui-state-highlight").removeClass("error");
+
+        $.each(list, function(index, error) {
+          $(error.element).attr("title", error.message).addClass("ui-state-highlight").addClass("error");
+          $(error.element).tooltip({
+            openn:true,
+            position: {
+              my: "left top",
+              at: "right+5 top-5"
+            }
+          });
+          //$(error.element).after('<div class="validatebox-tip" style="display:block;left:164px;top:165px;"><span class="validatebox-tip-content" >test<span></div>');
+        });
+        /*if (focussed && $(focussed).is("input, textarea")) {
+            $(this.currentForm).tooltip("open", { target: focussed });
+        }*/
+      }
+    });
+    $("form").validate({
+      rules:{
+        username:{
+          required:true
+          /* remote:{
+               type: "post",url: url,
+               data:{
+                   userName:function () {
+                       return $("regist_username").val();
+                   }
+               }
+           }用ajax判断数据库中用户名是否存在*/
+        },
+        password:{
+          required:true,
+          minlength:6
+        },
+        final_password:{
+          equalTo:"#password"
+        }
+      },
+      messages:{
+        username:{required:"用户名不能为空"},
+        password:{required:"密码不能为空",minlength:"密码最小的长度为6"},
+        final_password:{equalTo:"两次密码不一致"}
+      },
+      submitHandler: function (form) {
+        //验证通过后进行注册
+        form.submit();
+      }
+    })
+
+  </script>
+
+
+</body>
+
+</html>

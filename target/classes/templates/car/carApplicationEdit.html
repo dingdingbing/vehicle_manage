@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)http://cn.colloa.com/test/view/formTaskflow.aspx?context=1028857&name=%e7%94%a8%e8%bd%a6%e7%94%b3%e8%af%b7* -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>用车申请表编辑页面</title>
+    <link th:href="@{/css/view.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <style>
+        .cke {
+        visibility: hidden;
+    }
+    </style>
+</head>
+<body >
+<table style="min-width:950px;width:50%;height:100%;" align="center"  cellpadding="0" cellspacing="0" border="0">
+    <tbody>
+    <tr valign="top">
+        <td id="colloaForm">
+            <form  th:action="@{/car/carApplicationUpdate}" id="carApplicationForm" method="post"  >
+                <div>&nbsp;
+                    <div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>编辑用车申请单</strong></span>
+                    </div>
+                </div>
+                <div>
+                    <table class="tableListBorder" cellspacing="0" cellpadding="0" align="center" border="0">
+                        <tbody>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px"><span style="COLOR: rgb(255,0,0)">*</span>申请人
+                            </td>
+                            <td id="dbf.operator" style="WIDTH: 302px" dbf.type="required" dbf.value=""><input name="applicant" th:value="${carApplication.getApplicant()}"  class="fieldEditable">
+                            </td>
+                            <td style="TEXT-ALIGN: center; WIDTH: 147px"><span style="COLOR: rgb(255,0,0)">*</span>申请表单号
+                            </td>
+                            <td id="dbf.division" style="WIDTH: 313px" dbf.type="required" dbf.source="form.fieldSource.division"
+                                dbf.key="0">
+                                <input name="applicationno" readonly class="fieldEditable" th:value="${carApplication.getApplicationno()}" placeholder="该单号自动生成不需要填写">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px" dbf.type="date,required" dbf.source="date">
+                                <span style="COLOR: rgb(255,0,0)">*</span>申请日期
+                            </td>
+                            <td id="dbf.time2" style="WIDTH: 302px" dbf.type="date,required" dbf.source="date">
+                                <input id="test1" name="applicationdate" th:value="${#dates.format(carApplication.getApplicationdate(),'yyyy-MM-dd')}" class="fieldEditable">
+                            </td>
+                            <td style="TEXT-ALIGN: center; WIDTH: 147px">是否自驾</td>
+                            <td style="WIDTH: 313px">&nbsp;
+                                <input type="radio" value="1" th:checked="${carApplication.getSelfdriving()==1}" name="selfdriving">自驾（不需要安排司机）
+                                <input type="radio" value="0" th:checked="${carApplication.getSelfdriving()==0}" name="selfdriving">安排司机
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px">乘车人信息</td>
+                            <td id="乘车人" style="WIDTH: 302px"><input name="passenger" class="fieldEditable"></td>
+                            <td style="TEXT-ALIGN: center; WIDTH: 147px" dbf.type="" dbf.source="">乘车人数</td>
+                            <td id="乘车人数" style="WIDTH: 313px" dbf.type="number" dbf.source=""><input name="passengernumber" th:value="${carApplication.getPassengernumber()}" class="fieldEditable">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px"><span style="COLOR: rgb(255,0,0)">*</span>出发时间
+                            </td>
+                            <td id="dbf.time0" style="WIDTH: 302px" dbf.type="date,required" dbf.source="datetime,editable">
+                                <input id="test2" name="departuretime" th:value="${#dates.format(carApplication.getDeparturetime(),'yyyy-MM-dd')}" class="fieldEditable">
+                            </td>
+                            <td style="TEXT-ALIGN: center; WIDTH: 147px"><span style="COLOR: rgb(255,0,0)">*</span>返回时间
+                            </td>
+                            <td id="dbf.time1" style="WIDTH: 313px" dbf.type="date,required" dbf.source="datetime,editable">
+                                <input id="test3" name="returntime" th:value="${#dates.format(carApplication.getReturntime(),'yyyy-MM-dd')}" class="fieldEditable">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px"><span style="COLOR: rgb(255,0,0)">*</span>用车事由
+                            </td>
+                            <td id="用车事由" style="WIDTH: 765px" colspan="3" dbf.type="required" dbf.source="">
+                                <textarea  name="reasons" class="fieldEditable"  style="HEIGHT: 80px" >[[${carApplication.getReasons()}]]</textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px">用车主题</td>
+                            <td id="备注" style="WIDTH: 765px" colspan="3" dbf.type="" dbf.source="">
+                                <textarea id="e.备注" name="remarks" class="fieldEditable"  style="HEIGHT: 80px">[[${carApplication.getRemarks()}]]</textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px"><span style="COLOR: rgb(255,0,0)">*</span>指定车辆
+                            </td>
+                            <td id="dbf.text0" style="WIDTH: 302px" dbf.type="required!0" dbf.source="select sid,name from resourceX where modello=administration.vehicle and statusX=1 order by name"
+                                dbf.key="">
+                                <input name="designatedvehicle" th:value="${carApplication.getDesignatedvehicle()}" class="fieldEditable">
+                            </td>
+                            <td style="TEXT-ALIGN: center; WIDTH: 147px">驾驶员信息</td>
+                            <td id="驾驶员" style="WIDTH: 313px" colspan="3">
+                                <input name="driverinformation" th:value="${carApplication.getDriverinformation()}" class="fieldEditable">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px">乘车时间和地点</td>
+                            <td id="乘车时间和地点" style="WIDTH: 302px" dbf.type="" dbf.source="">
+                                <input name="timeandplace" th:value="${carApplication.getTimeandplace()}" class="fieldEditable">
+                            </td>
+                            <td style="TEXT-ALIGN: center; WIDTH: 147px">实际用车信息</td>
+                            <td id="实际用车信息" style="WIDTH: 313px" dbf.type="" dbf.source="">
+                                <input name="actualinformation" th:value="${carApplication.getActualinformation()}" class="fieldEditable">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="TEXT-ALIGN: center; WIDTH: 144px">用车油耗(L)</td>
+                            <td id="用车油耗" style="WIDTH: 302px" dbf.type="" dbf.source="">
+                                <input name="fuel" th:value="${carApplication.getFuel()}"  class="fieldEditable">
+                            </td>
+                            <td style="TEXT-ALIGN: center; WIDTH: 147px">用车费用(元)</td>
+                            <td id="dbf.budget" style="WIDTH: 313px" dbf.type="amount" dbf.source="">
+                                <input name="cost"  th:value="${carApplication.getCost()}" class="fieldEditable">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+            <form method="post">
+                <input type="hidden" id="viewState" name="viewState">
+            </form>
+            <br>
+            <div id="_vWorkflowActionsStatus" style="float:left;"></div>
+            <div id="_vWorkflowActionsShow" align="right">
+                <a id="submitBtn" class="button" style="cursor: pointer;" >确定更新</a>
+                <a id="cancelBtn" class="button" style="cursor: pointer;" >取消</a>
+            </div>
+            <br>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['form','layer','jquery','upload','laydate'],function(){
+        form = layui.form;
+        layer = layui.layer;
+        $ = layui.jquery;
+        upload = layui.upload;
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#test1',
+        });
+
+        datemax=new Date();
+        laydate.render({
+            elem: '#test2'
+        });
+
+        laydate.render({
+            elem: '#test3',
+            min:'datemax'
+        });
+
+        $("#submitBtn").click(function () {
+            if(submitForm()){
+                $("#carApplicationForm").submit();
+            }
+        });
+        $("#cancelBtn").click(function () {
+            if(confirm("是否放弃更改")){
+                window.close();
+            }
+        });
+    });
+    function submitForm() {
+        if(confirm("是否提交表单")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+
+
+</body>
+</html>

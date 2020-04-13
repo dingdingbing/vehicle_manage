@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.igeek.mapper.CarapplicationMapper" >
+  <resultMap id="BaseResultMap" type="com.igeek.pojo.Carapplication" >
+    <id column="applicationNo" property="applicationno" jdbcType="INTEGER" />
+    <result column="applicant" property="applicant" jdbcType="VARCHAR" />
+    <result column="applicationDate" property="applicationdate" jdbcType="DATE" />
+    <result column="selfDriving" property="selfdriving" jdbcType="INTEGER" />
+    <result column="passenger" property="passenger" jdbcType="VARCHAR" />
+    <result column="passengerNumber" property="passengernumber" jdbcType="INTEGER" />
+    <result column="departureTime" property="departuretime" jdbcType="DATE" />
+    <result column="returnTime" property="returntime" jdbcType="DATE" />
+    <result column="reasons" property="reasons" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="designatedVehicle" property="designatedvehicle" jdbcType="INTEGER" />
+    <result column="driverInformation" property="driverinformation" jdbcType="VARCHAR" />
+    <result column="timeAndPlace" property="timeandplace" jdbcType="VARCHAR" />
+    <result column="actualInformation" property="actualinformation" jdbcType="VARCHAR" />
+    <result column="fuel" property="fuel" jdbcType="VARCHAR" />
+    <result column="cost" property="cost" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    applicationNo, applicant, applicationDate, selfDriving, passenger, passengerNumber, 
+    departureTime, returnTime, reasons, remarks, designatedVehicle, driverInformation, 
+    timeAndPlace, actualInformation, fuel, cost
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.igeek.pojo.example.CarapplicationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from carApplication
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from carApplication
+    where applicationNo = #{applicationno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from carApplication
+    where applicationNo = #{applicationno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.igeek.pojo.example.CarapplicationExample" >
+    delete from carApplication
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.igeek.pojo.Carapplication" >
+    insert into carApplication (applicationNo, applicant, applicationDate, 
+      selfDriving, passenger, passengerNumber, 
+      departureTime, returnTime, reasons, 
+      remarks, designatedVehicle, driverInformation, 
+      timeAndPlace, actualInformation, fuel, 
+      cost)
+    values (#{applicationno,jdbcType=INTEGER}, #{applicant,jdbcType=VARCHAR}, #{applicationdate,jdbcType=DATE}, 
+      #{selfdriving,jdbcType=INTEGER}, #{passenger,jdbcType=VARCHAR}, #{passengernumber,jdbcType=INTEGER}, 
+      #{departuretime,jdbcType=DATE}, #{returntime,jdbcType=DATE}, #{reasons,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{designatedvehicle,jdbcType=INTEGER}, #{driverinformation,jdbcType=VARCHAR}, 
+      #{timeandplace,jdbcType=VARCHAR}, #{actualinformation,jdbcType=VARCHAR}, #{fuel,jdbcType=VARCHAR}, 
+      #{cost,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.igeek.pojo.Carapplication" >
+    insert into carApplication
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applicationno != null" >
+        applicationNo,
+      </if>
+      <if test="applicant != null" >
+        applicant,
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate,
+      </if>
+      <if test="selfdriving != null" >
+        selfDriving,
+      </if>
+      <if test="passenger != null" >
+        passenger,
+      </if>
+      <if test="passengernumber != null" >
+        passengerNumber,
+      </if>
+      <if test="departuretime != null" >
+        departureTime,
+      </if>
+      <if test="returntime != null" >
+        returnTime,
+      </if>
+      <if test="reasons != null" >
+        reasons,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="designatedvehicle != null" >
+        designatedVehicle,
+      </if>
+      <if test="driverinformation != null" >
+        driverInformation,
+      </if>
+      <if test="timeandplace != null" >
+        timeAndPlace,
+      </if>
+      <if test="actualinformation != null" >
+        actualInformation,
+      </if>
+      <if test="fuel != null" >
+        fuel,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applicationno != null" >
+        #{applicationno,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null" >
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="selfdriving != null" >
+        #{selfdriving,jdbcType=INTEGER},
+      </if>
+      <if test="passenger != null" >
+        #{passenger,jdbcType=VARCHAR},
+      </if>
+      <if test="passengernumber != null" >
+        #{passengernumber,jdbcType=INTEGER},
+      </if>
+      <if test="departuretime != null" >
+        #{departuretime,jdbcType=DATE},
+      </if>
+      <if test="returntime != null" >
+        #{returntime,jdbcType=DATE},
+      </if>
+      <if test="reasons != null" >
+        #{reasons,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="designatedvehicle != null" >
+        #{designatedvehicle,jdbcType=INTEGER},
+      </if>
+      <if test="driverinformation != null" >
+        #{driverinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="timeandplace != null" >
+        #{timeandplace,jdbcType=VARCHAR},
+      </if>
+      <if test="actualinformation != null" >
+        #{actualinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="fuel != null" >
+        #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.igeek.pojo.example.CarapplicationExample" resultType="java.lang.Integer" >
+    select count(*) from carApplication
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update carApplication
+    <set >
+      <if test="record.applicationno != null" >
+        applicationNo = #{record.applicationno,jdbcType=INTEGER},
+      </if>
+      <if test="record.applicant != null" >
+        applicant = #{record.applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationdate != null" >
+        applicationDate = #{record.applicationdate,jdbcType=DATE},
+      </if>
+      <if test="record.selfdriving != null" >
+        selfDriving = #{record.selfdriving,jdbcType=INTEGER},
+      </if>
+      <if test="record.passenger != null" >
+        passenger = #{record.passenger,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passengernumber != null" >
+        passengerNumber = #{record.passengernumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.departuretime != null" >
+        departureTime = #{record.departuretime,jdbcType=DATE},
+      </if>
+      <if test="record.returntime != null" >
+        returnTime = #{record.returntime,jdbcType=DATE},
+      </if>
+      <if test="record.reasons != null" >
+        reasons = #{record.reasons,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.designatedvehicle != null" >
+        designatedVehicle = #{record.designatedvehicle,jdbcType=INTEGER},
+      </if>
+      <if test="record.driverinformation != null" >
+        driverInformation = #{record.driverinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeandplace != null" >
+        timeAndPlace = #{record.timeandplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actualinformation != null" >
+        actualInformation = #{record.actualinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fuel != null" >
+        fuel = #{record.fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cost != null" >
+        cost = #{record.cost,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update carApplication
+    set applicationNo = #{record.applicationno,jdbcType=INTEGER},
+      applicant = #{record.applicant,jdbcType=VARCHAR},
+      applicationDate = #{record.applicationdate,jdbcType=DATE},
+      selfDriving = #{record.selfdriving,jdbcType=INTEGER},
+      passenger = #{record.passenger,jdbcType=VARCHAR},
+      passengerNumber = #{record.passengernumber,jdbcType=INTEGER},
+      departureTime = #{record.departuretime,jdbcType=DATE},
+      returnTime = #{record.returntime,jdbcType=DATE},
+      reasons = #{record.reasons,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      designatedVehicle = #{record.designatedvehicle,jdbcType=INTEGER},
+      driverInformation = #{record.driverinformation,jdbcType=VARCHAR},
+      timeAndPlace = #{record.timeandplace,jdbcType=VARCHAR},
+      actualInformation = #{record.actualinformation,jdbcType=VARCHAR},
+      fuel = #{record.fuel,jdbcType=VARCHAR},
+      cost = #{record.cost,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.pojo.Carapplication" >
+    update carApplication
+    <set >
+      <if test="applicant != null" >
+        applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate = #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="selfdriving != null" >
+        selfDriving = #{selfdriving,jdbcType=INTEGER},
+      </if>
+      <if test="passenger != null" >
+        passenger = #{passenger,jdbcType=VARCHAR},
+      </if>
+      <if test="passengernumber != null" >
+        passengerNumber = #{passengernumber,jdbcType=INTEGER},
+      </if>
+      <if test="departuretime != null" >
+        departureTime = #{departuretime,jdbcType=DATE},
+      </if>
+      <if test="returntime != null" >
+        returnTime = #{returntime,jdbcType=DATE},
+      </if>
+      <if test="reasons != null" >
+        reasons = #{reasons,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="designatedvehicle != null" >
+        designatedVehicle = #{designatedvehicle,jdbcType=INTEGER},
+      </if>
+      <if test="driverinformation != null" >
+        driverInformation = #{driverinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="timeandplace != null" >
+        timeAndPlace = #{timeandplace,jdbcType=VARCHAR},
+      </if>
+      <if test="actualinformation != null" >
+        actualInformation = #{actualinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="fuel != null" >
+        fuel = #{fuel,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=INTEGER},
+      </if>
+    </set>
+    where applicationNo = #{applicationno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.igeek.pojo.Carapplication" >
+    update carApplication
+    set applicant = #{applicant,jdbcType=VARCHAR},
+      applicationDate = #{applicationdate,jdbcType=DATE},
+      selfDriving = #{selfdriving,jdbcType=INTEGER},
+      passenger = #{passenger,jdbcType=VARCHAR},
+      passengerNumber = #{passengernumber,jdbcType=INTEGER},
+      departureTime = #{departuretime,jdbcType=DATE},
+      returnTime = #{returntime,jdbcType=DATE},
+      reasons = #{reasons,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      designatedVehicle = #{designatedvehicle,jdbcType=INTEGER},
+      driverInformation = #{driverinformation,jdbcType=VARCHAR},
+      timeAndPlace = #{timeandplace,jdbcType=VARCHAR},
+      actualInformation = #{actualinformation,jdbcType=VARCHAR},
+      fuel = #{fuel,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=INTEGER}
+    where applicationNo = #{applicationno,jdbcType=INTEGER}
+  </update>
+</mapper>

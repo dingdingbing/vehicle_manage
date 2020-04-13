@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>车辆维修保养登记*编辑页面</title>
+    <link th:href="@{/css/view.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <style>
+        .cke {
+            visibility: hidden;
+        }
+    </style>
+</head>
+	<body id="colloaBody">
+		<table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0">
+			<tbody>
+				<tr valign="top">
+					<td>&nbsp;</td>
+					<td id="colloaForm">
+						<div class="formTaskflowContainer">
+							<form class="formTaskflow" method="post" th:action="@{/carDispatch/carMaintainUpdate}" id="carMaintainForm">
+								
+								<div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>编辑车辆维修保养登记单</strong></span></div>
+								<div>
+									<table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center"
+									 border="0">
+										<colgroup>
+											<col width="150">
+											<col width="300">
+											<col width="150">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请人</td>
+												<td id="dbf.operator" dbf.type="required" >
+													<input name="applicant" th:value="${maintain.getApplicant()}" class="fieldEditable">
+													<input name="maintainno" th:value="${maintain.getMaintainno()}" type="hidden">
+												</td>
+												<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请日期</td>
+												<td id="dbf.time2" dbf.type="date,required" dbf.source="date">
+													<input id="test1" name="applicationdate" th:value="${#dates.format(maintain.getApplicationdate(),'yyyy-MM-dd')}"  class="fieldEditable">
+												</td>
+											</tr>
+											<tr>
+												<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>主题</td>
+												<td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="0">
+													<input name="theme" th:value="${maintain.getTheme()}" class="fieldEditable">
+												</td>
+												<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>车牌号</td>
+												<td id="dbf.text0" dbf.type="required!0" >
+													<input name="carbrand" th:value="${maintain.getCarbrand()}"  class="fieldEditable">
+												</td>
+											</tr>
+											<tr>
+												<td style="TEXT-ALIGN: center">类型</td>
+												<td dbf.type="" dbf.source="">
+													<input  type="radio" value="0" name="type" autocomplete="off" th:checked="${maintain.getType()==0}">维修
+													<input  type="radio" value="1" name="type" autocomplete="off" th:checked="${maintain.getType()==1}">保养</td>
+												<td style="TEXT-ALIGN: center">维修保养公司</td>
+												<td id="修配联系信息">
+													<input id="e.修配联系信息" name="maintenancecompany" th:value="${maintain.getMaintenancecompany()}" class="fieldEditable">
+												</td>
+											</tr>
+											<tr>
+												<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>费用(元)</td>
+												<td id="dbf.budget" dbf.type="required,amount" dbf.source="">
+													<input id="e.dbf.budget" name="cost" th:value="${maintain.getCost()==null?0:maintain.getCost()}" class="fieldEditable textAmount">
+												</td>
+												<td style="TEXT-ALIGN: center" dbf.type="" dbf.source="">经办人</td>
+												<td id="dbf.text1" dbf.type="" dbf.source="">
+													<input name="chargeperson" th:value="${maintain.getChargeperson()}"  class="fieldEditable"></td>
+											</tr>
+											<tr>
+												<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>开始日期</td>
+												<td id="dbf.time0" dbf.type="date" dbf.source="date">
+													<input id="test2" name="startmaintaindate" th:value="${#dates.format(maintain.getStartmaintaindate(),'yyyy-MM-dd')}" class="fieldEditable">
+												</td>
+												<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>结束日期</td>
+												<td id="dbf.time1" dbf.type="date" dbf.source="date">
+													<input id="test3" name="endmaintaindate" th:value="${#dates.format(maintain.getEndmaintaindate(),'yyyy-MM-dd')}" class="fieldEditable">
+												</td>
+											</tr>
+											<tr>
+												<td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>具体内容</td>
+												<td id="维修保养内容" colspan="3" dbf.type="required" dbf.source="">
+													<textarea id="e.维修保养内容" name="content" class="fieldEditable"  style="HEIGHT: 80px">[[${maintain.getContent()}]]</textarea>
+												</td>
+											</tr>
+											<tr>
+												<td style="TEXT-ALIGN: center">备注</td>
+												<td id="备注" colspan="3" dbf.type="" dbf.source="">
+													<textarea id="e.备注" name="remarks" class="fieldEditable" style="HEIGHT: 80px">[[${maintain.getRemarks()}]]</textarea>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div>&nbsp;</div>
+								<table class="tableForm" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center"
+									   border="0">
+									<colgroup>
+										<col width="60">
+										<col>
+									</colgroup>
+									<tbody>
+									<tr>
+										<td style="TEXT-ALIGN: right">附件:</td>
+										<td id="attachments" dbf.source="files">
+											<input type="hidden" name="enclosure" id="url_test">
+											<input id="enclosureId1" type="hidden"  name="filename"><a id="enclosureId" target="_blank" th:text="${maintain.getFilename()}" th:href="${#strings.isEmpty(maintain.getEnclosure())?'':'http://'+maintain.getEnclosure()}" ></a>
+											<button type="button" class="layui-btn-sm" id="upload" style="float: right">
+												上传附件
+											</button>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+						<form method="post"><input type="hidden" id="viewState" name="viewState"></form>
+						
+						<br>
+						<div id="_vWorkflowActionsStatus" style="float:left;"></div>
+						<div id="_vWorkflowActionsShow" align="right">
+							<a id="submitBtn" class="button" style="cursor: pointer;">确定</a>
+							<a id="cancelBtn" class="button" style="cursor: pointer;">取消</a>
+						</div>
+						<br>
+					
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+		<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['form','layer','jquery','upload','laydate'],function(){
+        form = layui.form;
+        layer = layui.layer;
+        $ = layui.jquery;
+        upload = layui.upload;
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#test1'
+        });
+
+        datemax=new Date();
+        laydate.render({
+            elem: '#test2'
+        });
+        laydate.render({
+            elem: '#test3'
+        });
+
+
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: '/upload' //上传接口
+            ,accept: 'file'
+            ,before:function(obj){
+                obj.preview(function(index, file, result){
+                    $("#enclosureId").text(file.name);
+                    $("#enclosureId1").val(file.name);
+                    console.log(index+" "+file.name+" "+result);
+                });
+            }
+            ,done: function(res){
+                //上传完毕回调
+                if (res.code == 0) {
+                    layer.msg("文件上传成功", {icon: 1});
+                    console.log(res.data);
+                    //$("#imgs").append("<img src=http://"+res.data+" width='300px' height='225px' style='margin-left: 8px'>");
+                    $("#enclosureId").attr("href","http://"+res.data);
+                    $("#enclosureId").click(function () {
+                        window.open("http://"+res.data);
+                    });
+                    $("#url_test").val(res.data);
+                } else {
+                    layer.msg("文件上传失败", {icon: 2});
+                }
+            }
+            ,error: function(){
+                //请求异常回调
+
+            }
+        });
+        $(function () {
+            $("input").attr("autocomplete","off");
+        });
+
+        $("#submitBtn").click(function () {
+            if(confirm("是否提交表单")){
+                $("#carMaintainForm").submit();
+            }
+        });
+		$("#cancelBtn").click(function () {
+			if(confirm("是否取消提交表单，并关闭该页面")){
+				window.opener=null;
+				window.open('','_self');
+				window.close();
+			}
+		});
+    });
+
+</script>
+	</body>
+</html>

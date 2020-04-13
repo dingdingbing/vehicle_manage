@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.igeek.mapper.InsuranceMapper" >
+  <resultMap id="BaseResultMap" type="com.igeek.pojo.Insurance" >
+    <id column="insuranceNo" property="insuranceno" jdbcType="INTEGER" />
+    <result column="applicant" property="applicant" jdbcType="VARCHAR" />
+    <result column="applicationDate" property="applicationdate" jdbcType="DATE" />
+    <result column="theme" property="theme" jdbcType="VARCHAR" />
+    <result column="carBrand" property="carbrand" jdbcType="VARCHAR" />
+    <result column="firstInsurancePremium" property="firstinsurancepremium" jdbcType="INTEGER" />
+    <result column="firstInsuranceAmount" property="firstinsuranceamount" jdbcType="INTEGER" />
+    <result column="firstInsuranceRemarks" property="firstinsuranceremarks" jdbcType="VARCHAR" />
+    <result column="secondInsurancePremium" property="secondinsurancepremium" jdbcType="INTEGER" />
+    <result column="secondInsuranceAmount" property="secondinsuranceamount" jdbcType="INTEGER" />
+    <result column="secondInsuranceRemarks" property="secondinsuranceremarks" jdbcType="VARCHAR" />
+    <result column="thirdInsurancePremium" property="thirdinsurancepremium" jdbcType="INTEGER" />
+    <result column="thirdInsuranceAmount" property="thirdinsuranceamount" jdbcType="INTEGER" />
+    <result column="thirdInsuranceRemarks" property="thirdinsuranceremarks" jdbcType="VARCHAR" />
+    <result column="fourthInsurancePremium" property="fourthinsurancepremium" jdbcType="INTEGER" />
+    <result column="fourthInsuranceAmount" property="fourthinsuranceamount" jdbcType="INTEGER" />
+    <result column="fourthInsuranceRemarks" property="fourthinsuranceremarks" jdbcType="VARCHAR" />
+    <result column="fifthInsurancePremium" property="fifthinsurancepremium" jdbcType="INTEGER" />
+    <result column="fifthInsuranceAmount" property="fifthinsuranceamount" jdbcType="INTEGER" />
+    <result column="fifthInsuranceRemarks" property="fifthinsuranceremarks" jdbcType="VARCHAR" />
+    <result column="sixthInsurancePremium" property="sixthinsurancepremium" jdbcType="INTEGER" />
+    <result column="sixthInsuranceAmount" property="sixthinsuranceamount" jdbcType="INTEGER" />
+    <result column="sixthInsuranceRemarks" property="sixthinsuranceremarks" jdbcType="VARCHAR" />
+    <result column="seventhInsurancePremium" property="seventhinsurancepremium" jdbcType="INTEGER" />
+    <result column="seventhInsuranceAmount" property="seventhinsuranceamount" jdbcType="INTEGER" />
+    <result column="seventhInsuranceRemarks" property="seventhinsuranceremarks" jdbcType="VARCHAR" />
+    <result column="eighthInsurancePremium" property="eighthinsurancepremium" jdbcType="INTEGER" />
+    <result column="eighthInsuranceAmount" property="eighthinsuranceamount" jdbcType="INTEGER" />
+    <result column="eighthInsuranceRemarks" property="eighthinsuranceremarks" jdbcType="VARCHAR" />
+    <result column="repairShopPremium" property="repairshoppremium" jdbcType="INTEGER" />
+    <result column="repairShopAmount" property="repairshopamount" jdbcType="INTEGER" />
+    <result column="repairShopRemarks" property="repairshopremarks" jdbcType="VARCHAR" />
+    <result column="excludingDeductiblePremium" property="excludingdeductiblepremium" jdbcType="INTEGER" />
+    <result column="excludingDeductibleAmount" property="excludingdeductibleamount" jdbcType="INTEGER" />
+    <result column="excludingDeductibleRemarks" property="excludingdeductibleremarks" jdbcType="VARCHAR" />
+    <result column="insuranceCompany" property="insurancecompany" jdbcType="VARCHAR" />
+    <result column="insuranceCall" property="insurancecall" jdbcType="VARCHAR" />
+    <result column="insurancePeriodStart" property="insuranceperiodstart" jdbcType="DATE" />
+    <result column="insurancePeriodEnd" property="insuranceperiodend" jdbcType="DATE" />
+    <result column="totalCost" property="totalcost" jdbcType="DECIMAL" />
+    <result column="chargePerson" property="chargeperson" jdbcType="VARCHAR" />
+    <result column="enclosure" property="enclosure" jdbcType="VARCHAR" />
+    <result column="filename" property="filename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    insuranceNo, applicant, applicationDate, theme, carBrand, firstInsurancePremium, 
+    firstInsuranceAmount, firstInsuranceRemarks, secondInsurancePremium, secondInsuranceAmount, 
+    secondInsuranceRemarks, thirdInsurancePremium, thirdInsuranceAmount, thirdInsuranceRemarks, 
+    fourthInsurancePremium, fourthInsuranceAmount, fourthInsuranceRemarks, fifthInsurancePremium, 
+    fifthInsuranceAmount, fifthInsuranceRemarks, sixthInsurancePremium, sixthInsuranceAmount, 
+    sixthInsuranceRemarks, seventhInsurancePremium, seventhInsuranceAmount, seventhInsuranceRemarks, 
+    eighthInsurancePremium, eighthInsuranceAmount, eighthInsuranceRemarks, repairShopPremium, 
+    repairShopAmount, repairShopRemarks, excludingDeductiblePremium, excludingDeductibleAmount, 
+    excludingDeductibleRemarks, insuranceCompany, insuranceCall, insurancePeriodStart, 
+    insurancePeriodEnd, totalCost, chargePerson, enclosure, filename
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.igeek.pojo.example.InsuranceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from insurance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from insurance
+    where insuranceNo = #{insuranceno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from insurance
+    where insuranceNo = #{insuranceno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.igeek.pojo.example.InsuranceExample" >
+    delete from insurance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.igeek.pojo.Insurance" >
+    insert into insurance (insuranceNo, applicant, applicationDate, 
+      theme, carBrand, firstInsurancePremium, 
+      firstInsuranceAmount, firstInsuranceRemarks, 
+      secondInsurancePremium, secondInsuranceAmount, 
+      secondInsuranceRemarks, thirdInsurancePremium, 
+      thirdInsuranceAmount, thirdInsuranceRemarks, 
+      fourthInsurancePremium, fourthInsuranceAmount, 
+      fourthInsuranceRemarks, fifthInsurancePremium, 
+      fifthInsuranceAmount, fifthInsuranceRemarks, 
+      sixthInsurancePremium, sixthInsuranceAmount, 
+      sixthInsuranceRemarks, seventhInsurancePremium, 
+      seventhInsuranceAmount, seventhInsuranceRemarks, 
+      eighthInsurancePremium, eighthInsuranceAmount, 
+      eighthInsuranceRemarks, repairShopPremium, 
+      repairShopAmount, repairShopRemarks, excludingDeductiblePremium, 
+      excludingDeductibleAmount, excludingDeductibleRemarks, 
+      insuranceCompany, insuranceCall, insurancePeriodStart, 
+      insurancePeriodEnd, totalCost, chargePerson, 
+      enclosure, filename)
+    values (#{insuranceno,jdbcType=INTEGER}, #{applicant,jdbcType=VARCHAR}, #{applicationdate,jdbcType=DATE}, 
+      #{theme,jdbcType=VARCHAR}, #{carbrand,jdbcType=VARCHAR}, #{firstinsurancepremium,jdbcType=INTEGER}, 
+      #{firstinsuranceamount,jdbcType=INTEGER}, #{firstinsuranceremarks,jdbcType=VARCHAR}, 
+      #{secondinsurancepremium,jdbcType=INTEGER}, #{secondinsuranceamount,jdbcType=INTEGER}, 
+      #{secondinsuranceremarks,jdbcType=VARCHAR}, #{thirdinsurancepremium,jdbcType=INTEGER}, 
+      #{thirdinsuranceamount,jdbcType=INTEGER}, #{thirdinsuranceremarks,jdbcType=VARCHAR}, 
+      #{fourthinsurancepremium,jdbcType=INTEGER}, #{fourthinsuranceamount,jdbcType=INTEGER}, 
+      #{fourthinsuranceremarks,jdbcType=VARCHAR}, #{fifthinsurancepremium,jdbcType=INTEGER}, 
+      #{fifthinsuranceamount,jdbcType=INTEGER}, #{fifthinsuranceremarks,jdbcType=VARCHAR}, 
+      #{sixthinsurancepremium,jdbcType=INTEGER}, #{sixthinsuranceamount,jdbcType=INTEGER}, 
+      #{sixthinsuranceremarks,jdbcType=VARCHAR}, #{seventhinsurancepremium,jdbcType=INTEGER}, 
+      #{seventhinsuranceamount,jdbcType=INTEGER}, #{seventhinsuranceremarks,jdbcType=VARCHAR}, 
+      #{eighthinsurancepremium,jdbcType=INTEGER}, #{eighthinsuranceamount,jdbcType=INTEGER}, 
+      #{eighthinsuranceremarks,jdbcType=VARCHAR}, #{repairshoppremium,jdbcType=INTEGER}, 
+      #{repairshopamount,jdbcType=INTEGER}, #{repairshopremarks,jdbcType=VARCHAR}, #{excludingdeductiblepremium,jdbcType=INTEGER}, 
+      #{excludingdeductibleamount,jdbcType=INTEGER}, #{excludingdeductibleremarks,jdbcType=VARCHAR}, 
+      #{insurancecompany,jdbcType=VARCHAR}, #{insurancecall,jdbcType=VARCHAR}, #{insuranceperiodstart,jdbcType=DATE}, 
+      #{insuranceperiodend,jdbcType=DATE}, #{totalcost,jdbcType=DECIMAL}, #{chargeperson,jdbcType=VARCHAR}, 
+      #{enclosure,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.igeek.pojo.Insurance" >
+    insert into insurance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="insuranceno != null" >
+        insuranceNo,
+      </if>
+      <if test="applicant != null" >
+        applicant,
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate,
+      </if>
+      <if test="theme != null" >
+        theme,
+      </if>
+      <if test="carbrand != null" >
+        carBrand,
+      </if>
+      <if test="firstinsurancepremium != null" >
+        firstInsurancePremium,
+      </if>
+      <if test="firstinsuranceamount != null" >
+        firstInsuranceAmount,
+      </if>
+      <if test="firstinsuranceremarks != null" >
+        firstInsuranceRemarks,
+      </if>
+      <if test="secondinsurancepremium != null" >
+        secondInsurancePremium,
+      </if>
+      <if test="secondinsuranceamount != null" >
+        secondInsuranceAmount,
+      </if>
+      <if test="secondinsuranceremarks != null" >
+        secondInsuranceRemarks,
+      </if>
+      <if test="thirdinsurancepremium != null" >
+        thirdInsurancePremium,
+      </if>
+      <if test="thirdinsuranceamount != null" >
+        thirdInsuranceAmount,
+      </if>
+      <if test="thirdinsuranceremarks != null" >
+        thirdInsuranceRemarks,
+      </if>
+      <if test="fourthinsurancepremium != null" >
+        fourthInsurancePremium,
+      </if>
+      <if test="fourthinsuranceamount != null" >
+        fourthInsuranceAmount,
+      </if>
+      <if test="fourthinsuranceremarks != null" >
+        fourthInsuranceRemarks,
+      </if>
+      <if test="fifthinsurancepremium != null" >
+        fifthInsurancePremium,
+      </if>
+      <if test="fifthinsuranceamount != null" >
+        fifthInsuranceAmount,
+      </if>
+      <if test="fifthinsuranceremarks != null" >
+        fifthInsuranceRemarks,
+      </if>
+      <if test="sixthinsurancepremium != null" >
+        sixthInsurancePremium,
+      </if>
+      <if test="sixthinsuranceamount != null" >
+        sixthInsuranceAmount,
+      </if>
+      <if test="sixthinsuranceremarks != null" >
+        sixthInsuranceRemarks,
+      </if>
+      <if test="seventhinsurancepremium != null" >
+        seventhInsurancePremium,
+      </if>
+      <if test="seventhinsuranceamount != null" >
+        seventhInsuranceAmount,
+      </if>
+      <if test="seventhinsuranceremarks != null" >
+        seventhInsuranceRemarks,
+      </if>
+      <if test="eighthinsurancepremium != null" >
+        eighthInsurancePremium,
+      </if>
+      <if test="eighthinsuranceamount != null" >
+        eighthInsuranceAmount,
+      </if>
+      <if test="eighthinsuranceremarks != null" >
+        eighthInsuranceRemarks,
+      </if>
+      <if test="repairshoppremium != null" >
+        repairShopPremium,
+      </if>
+      <if test="repairshopamount != null" >
+        repairShopAmount,
+      </if>
+      <if test="repairshopremarks != null" >
+        repairShopRemarks,
+      </if>
+      <if test="excludingdeductiblepremium != null" >
+        excludingDeductiblePremium,
+      </if>
+      <if test="excludingdeductibleamount != null" >
+        excludingDeductibleAmount,
+      </if>
+      <if test="excludingdeductibleremarks != null" >
+        excludingDeductibleRemarks,
+      </if>
+      <if test="insurancecompany != null" >
+        insuranceCompany,
+      </if>
+      <if test="insurancecall != null" >
+        insuranceCall,
+      </if>
+      <if test="insuranceperiodstart != null" >
+        insurancePeriodStart,
+      </if>
+      <if test="insuranceperiodend != null" >
+        insurancePeriodEnd,
+      </if>
+      <if test="totalcost != null" >
+        totalCost,
+      </if>
+      <if test="chargeperson != null" >
+        chargePerson,
+      </if>
+      <if test="enclosure != null" >
+        enclosure,
+      </if>
+      <if test="filename != null" >
+        filename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="insuranceno != null" >
+        #{insuranceno,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null" >
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null" >
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="firstinsurancepremium != null" >
+        #{firstinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="firstinsuranceamount != null" >
+        #{firstinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="firstinsuranceremarks != null" >
+        #{firstinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="secondinsurancepremium != null" >
+        #{secondinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="secondinsuranceamount != null" >
+        #{secondinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="secondinsuranceremarks != null" >
+        #{secondinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdinsurancepremium != null" >
+        #{thirdinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="thirdinsuranceamount != null" >
+        #{thirdinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="thirdinsuranceremarks != null" >
+        #{thirdinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="fourthinsurancepremium != null" >
+        #{fourthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="fourthinsuranceamount != null" >
+        #{fourthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="fourthinsuranceremarks != null" >
+        #{fourthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="fifthinsurancepremium != null" >
+        #{fifthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="fifthinsuranceamount != null" >
+        #{fifthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="fifthinsuranceremarks != null" >
+        #{fifthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="sixthinsurancepremium != null" >
+        #{sixthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="sixthinsuranceamount != null" >
+        #{sixthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="sixthinsuranceremarks != null" >
+        #{sixthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="seventhinsurancepremium != null" >
+        #{seventhinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="seventhinsuranceamount != null" >
+        #{seventhinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="seventhinsuranceremarks != null" >
+        #{seventhinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="eighthinsurancepremium != null" >
+        #{eighthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="eighthinsuranceamount != null" >
+        #{eighthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="eighthinsuranceremarks != null" >
+        #{eighthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="repairshoppremium != null" >
+        #{repairshoppremium,jdbcType=INTEGER},
+      </if>
+      <if test="repairshopamount != null" >
+        #{repairshopamount,jdbcType=INTEGER},
+      </if>
+      <if test="repairshopremarks != null" >
+        #{repairshopremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="excludingdeductiblepremium != null" >
+        #{excludingdeductiblepremium,jdbcType=INTEGER},
+      </if>
+      <if test="excludingdeductibleamount != null" >
+        #{excludingdeductibleamount,jdbcType=INTEGER},
+      </if>
+      <if test="excludingdeductibleremarks != null" >
+        #{excludingdeductibleremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancecompany != null" >
+        #{insurancecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancecall != null" >
+        #{insurancecall,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceperiodstart != null" >
+        #{insuranceperiodstart,jdbcType=DATE},
+      </if>
+      <if test="insuranceperiodend != null" >
+        #{insuranceperiodend,jdbcType=DATE},
+      </if>
+      <if test="totalcost != null" >
+        #{totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeperson != null" >
+        #{chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null" >
+        #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.igeek.pojo.example.InsuranceExample" resultType="java.lang.Integer" >
+    select count(*) from insurance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update insurance
+    <set >
+      <if test="record.insuranceno != null" >
+        insuranceNo = #{record.insuranceno,jdbcType=INTEGER},
+      </if>
+      <if test="record.applicant != null" >
+        applicant = #{record.applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applicationdate != null" >
+        applicationDate = #{record.applicationdate,jdbcType=DATE},
+      </if>
+      <if test="record.theme != null" >
+        theme = #{record.theme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carbrand != null" >
+        carBrand = #{record.carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstinsurancepremium != null" >
+        firstInsurancePremium = #{record.firstinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstinsuranceamount != null" >
+        firstInsuranceAmount = #{record.firstinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstinsuranceremarks != null" >
+        firstInsuranceRemarks = #{record.firstinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondinsurancepremium != null" >
+        secondInsurancePremium = #{record.secondinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.secondinsuranceamount != null" >
+        secondInsuranceAmount = #{record.secondinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.secondinsuranceremarks != null" >
+        secondInsuranceRemarks = #{record.secondinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thirdinsurancepremium != null" >
+        thirdInsurancePremium = #{record.thirdinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.thirdinsuranceamount != null" >
+        thirdInsuranceAmount = #{record.thirdinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.thirdinsuranceremarks != null" >
+        thirdInsuranceRemarks = #{record.thirdinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fourthinsurancepremium != null" >
+        fourthInsurancePremium = #{record.fourthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.fourthinsuranceamount != null" >
+        fourthInsuranceAmount = #{record.fourthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.fourthinsuranceremarks != null" >
+        fourthInsuranceRemarks = #{record.fourthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fifthinsurancepremium != null" >
+        fifthInsurancePremium = #{record.fifthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.fifthinsuranceamount != null" >
+        fifthInsuranceAmount = #{record.fifthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.fifthinsuranceremarks != null" >
+        fifthInsuranceRemarks = #{record.fifthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sixthinsurancepremium != null" >
+        sixthInsurancePremium = #{record.sixthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.sixthinsuranceamount != null" >
+        sixthInsuranceAmount = #{record.sixthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.sixthinsuranceremarks != null" >
+        sixthInsuranceRemarks = #{record.sixthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seventhinsurancepremium != null" >
+        seventhInsurancePremium = #{record.seventhinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.seventhinsuranceamount != null" >
+        seventhInsuranceAmount = #{record.seventhinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.seventhinsuranceremarks != null" >
+        seventhInsuranceRemarks = #{record.seventhinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eighthinsurancepremium != null" >
+        eighthInsurancePremium = #{record.eighthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.eighthinsuranceamount != null" >
+        eighthInsuranceAmount = #{record.eighthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.eighthinsuranceremarks != null" >
+        eighthInsuranceRemarks = #{record.eighthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairshoppremium != null" >
+        repairShopPremium = #{record.repairshoppremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.repairshopamount != null" >
+        repairShopAmount = #{record.repairshopamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.repairshopremarks != null" >
+        repairShopRemarks = #{record.repairshopremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.excludingdeductiblepremium != null" >
+        excludingDeductiblePremium = #{record.excludingdeductiblepremium,jdbcType=INTEGER},
+      </if>
+      <if test="record.excludingdeductibleamount != null" >
+        excludingDeductibleAmount = #{record.excludingdeductibleamount,jdbcType=INTEGER},
+      </if>
+      <if test="record.excludingdeductibleremarks != null" >
+        excludingDeductibleRemarks = #{record.excludingdeductibleremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insurancecompany != null" >
+        insuranceCompany = #{record.insurancecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insurancecall != null" >
+        insuranceCall = #{record.insurancecall,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insuranceperiodstart != null" >
+        insurancePeriodStart = #{record.insuranceperiodstart,jdbcType=DATE},
+      </if>
+      <if test="record.insuranceperiodend != null" >
+        insurancePeriodEnd = #{record.insuranceperiodend,jdbcType=DATE},
+      </if>
+      <if test="record.totalcost != null" >
+        totalCost = #{record.totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.chargeperson != null" >
+        chargePerson = #{record.chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enclosure != null" >
+        enclosure = #{record.enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filename != null" >
+        filename = #{record.filename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update insurance
+    set insuranceNo = #{record.insuranceno,jdbcType=INTEGER},
+      applicant = #{record.applicant,jdbcType=VARCHAR},
+      applicationDate = #{record.applicationdate,jdbcType=DATE},
+      theme = #{record.theme,jdbcType=VARCHAR},
+      carBrand = #{record.carbrand,jdbcType=VARCHAR},
+      firstInsurancePremium = #{record.firstinsurancepremium,jdbcType=INTEGER},
+      firstInsuranceAmount = #{record.firstinsuranceamount,jdbcType=INTEGER},
+      firstInsuranceRemarks = #{record.firstinsuranceremarks,jdbcType=VARCHAR},
+      secondInsurancePremium = #{record.secondinsurancepremium,jdbcType=INTEGER},
+      secondInsuranceAmount = #{record.secondinsuranceamount,jdbcType=INTEGER},
+      secondInsuranceRemarks = #{record.secondinsuranceremarks,jdbcType=VARCHAR},
+      thirdInsurancePremium = #{record.thirdinsurancepremium,jdbcType=INTEGER},
+      thirdInsuranceAmount = #{record.thirdinsuranceamount,jdbcType=INTEGER},
+      thirdInsuranceRemarks = #{record.thirdinsuranceremarks,jdbcType=VARCHAR},
+      fourthInsurancePremium = #{record.fourthinsurancepremium,jdbcType=INTEGER},
+      fourthInsuranceAmount = #{record.fourthinsuranceamount,jdbcType=INTEGER},
+      fourthInsuranceRemarks = #{record.fourthinsuranceremarks,jdbcType=VARCHAR},
+      fifthInsurancePremium = #{record.fifthinsurancepremium,jdbcType=INTEGER},
+      fifthInsuranceAmount = #{record.fifthinsuranceamount,jdbcType=INTEGER},
+      fifthInsuranceRemarks = #{record.fifthinsuranceremarks,jdbcType=VARCHAR},
+      sixthInsurancePremium = #{record.sixthinsurancepremium,jdbcType=INTEGER},
+      sixthInsuranceAmount = #{record.sixthinsuranceamount,jdbcType=INTEGER},
+      sixthInsuranceRemarks = #{record.sixthinsuranceremarks,jdbcType=VARCHAR},
+      seventhInsurancePremium = #{record.seventhinsurancepremium,jdbcType=INTEGER},
+      seventhInsuranceAmount = #{record.seventhinsuranceamount,jdbcType=INTEGER},
+      seventhInsuranceRemarks = #{record.seventhinsuranceremarks,jdbcType=VARCHAR},
+      eighthInsurancePremium = #{record.eighthinsurancepremium,jdbcType=INTEGER},
+      eighthInsuranceAmount = #{record.eighthinsuranceamount,jdbcType=INTEGER},
+      eighthInsuranceRemarks = #{record.eighthinsuranceremarks,jdbcType=VARCHAR},
+      repairShopPremium = #{record.repairshoppremium,jdbcType=INTEGER},
+      repairShopAmount = #{record.repairshopamount,jdbcType=INTEGER},
+      repairShopRemarks = #{record.repairshopremarks,jdbcType=VARCHAR},
+      excludingDeductiblePremium = #{record.excludingdeductiblepremium,jdbcType=INTEGER},
+      excludingDeductibleAmount = #{record.excludingdeductibleamount,jdbcType=INTEGER},
+      excludingDeductibleRemarks = #{record.excludingdeductibleremarks,jdbcType=VARCHAR},
+      insuranceCompany = #{record.insurancecompany,jdbcType=VARCHAR},
+      insuranceCall = #{record.insurancecall,jdbcType=VARCHAR},
+      insurancePeriodStart = #{record.insuranceperiodstart,jdbcType=DATE},
+      insurancePeriodEnd = #{record.insuranceperiodend,jdbcType=DATE},
+      totalCost = #{record.totalcost,jdbcType=DECIMAL},
+      chargePerson = #{record.chargeperson,jdbcType=VARCHAR},
+      enclosure = #{record.enclosure,jdbcType=VARCHAR},
+      filename = #{record.filename,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.igeek.pojo.Insurance" >
+    update insurance
+    <set >
+      <if test="applicant != null" >
+        applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationdate != null" >
+        applicationDate = #{applicationdate,jdbcType=DATE},
+      </if>
+      <if test="theme != null" >
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null" >
+        carBrand = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="firstinsurancepremium != null" >
+        firstInsurancePremium = #{firstinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="firstinsuranceamount != null" >
+        firstInsuranceAmount = #{firstinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="firstinsuranceremarks != null" >
+        firstInsuranceRemarks = #{firstinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="secondinsurancepremium != null" >
+        secondInsurancePremium = #{secondinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="secondinsuranceamount != null" >
+        secondInsuranceAmount = #{secondinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="secondinsuranceremarks != null" >
+        secondInsuranceRemarks = #{secondinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdinsurancepremium != null" >
+        thirdInsurancePremium = #{thirdinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="thirdinsuranceamount != null" >
+        thirdInsuranceAmount = #{thirdinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="thirdinsuranceremarks != null" >
+        thirdInsuranceRemarks = #{thirdinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="fourthinsurancepremium != null" >
+        fourthInsurancePremium = #{fourthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="fourthinsuranceamount != null" >
+        fourthInsuranceAmount = #{fourthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="fourthinsuranceremarks != null" >
+        fourthInsuranceRemarks = #{fourthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="fifthinsurancepremium != null" >
+        fifthInsurancePremium = #{fifthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="fifthinsuranceamount != null" >
+        fifthInsuranceAmount = #{fifthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="fifthinsuranceremarks != null" >
+        fifthInsuranceRemarks = #{fifthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="sixthinsurancepremium != null" >
+        sixthInsurancePremium = #{sixthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="sixthinsuranceamount != null" >
+        sixthInsuranceAmount = #{sixthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="sixthinsuranceremarks != null" >
+        sixthInsuranceRemarks = #{sixthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="seventhinsurancepremium != null" >
+        seventhInsurancePremium = #{seventhinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="seventhinsuranceamount != null" >
+        seventhInsuranceAmount = #{seventhinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="seventhinsuranceremarks != null" >
+        seventhInsuranceRemarks = #{seventhinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="eighthinsurancepremium != null" >
+        eighthInsurancePremium = #{eighthinsurancepremium,jdbcType=INTEGER},
+      </if>
+      <if test="eighthinsuranceamount != null" >
+        eighthInsuranceAmount = #{eighthinsuranceamount,jdbcType=INTEGER},
+      </if>
+      <if test="eighthinsuranceremarks != null" >
+        eighthInsuranceRemarks = #{eighthinsuranceremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="repairshoppremium != null" >
+        repairShopPremium = #{repairshoppremium,jdbcType=INTEGER},
+      </if>
+      <if test="repairshopamount != null" >
+        repairShopAmount = #{repairshopamount,jdbcType=INTEGER},
+      </if>
+      <if test="repairshopremarks != null" >
+        repairShopRemarks = #{repairshopremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="excludingdeductiblepremium != null" >
+        excludingDeductiblePremium = #{excludingdeductiblepremium,jdbcType=INTEGER},
+      </if>
+      <if test="excludingdeductibleamount != null" >
+        excludingDeductibleAmount = #{excludingdeductibleamount,jdbcType=INTEGER},
+      </if>
+      <if test="excludingdeductibleremarks != null" >
+        excludingDeductibleRemarks = #{excludingdeductibleremarks,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancecompany != null" >
+        insuranceCompany = #{insurancecompany,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancecall != null" >
+        insuranceCall = #{insurancecall,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceperiodstart != null" >
+        insurancePeriodStart = #{insuranceperiodstart,jdbcType=DATE},
+      </if>
+      <if test="insuranceperiodend != null" >
+        insurancePeriodEnd = #{insuranceperiodend,jdbcType=DATE},
+      </if>
+      <if test="totalcost != null" >
+        totalCost = #{totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeperson != null" >
+        chargePerson = #{chargeperson,jdbcType=VARCHAR},
+      </if>
+      <if test="enclosure != null" >
+        enclosure = #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where insuranceNo = #{insuranceno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.igeek.pojo.Insurance" >
+    update insurance
+    set applicant = #{applicant,jdbcType=VARCHAR},
+      applicationDate = #{applicationdate,jdbcType=DATE},
+      theme = #{theme,jdbcType=VARCHAR},
+      carBrand = #{carbrand,jdbcType=VARCHAR},
+      firstInsurancePremium = #{firstinsurancepremium,jdbcType=INTEGER},
+      firstInsuranceAmount = #{firstinsuranceamount,jdbcType=INTEGER},
+      firstInsuranceRemarks = #{firstinsuranceremarks,jdbcType=VARCHAR},
+      secondInsurancePremium = #{secondinsurancepremium,jdbcType=INTEGER},
+      secondInsuranceAmount = #{secondinsuranceamount,jdbcType=INTEGER},
+      secondInsuranceRemarks = #{secondinsuranceremarks,jdbcType=VARCHAR},
+      thirdInsurancePremium = #{thirdinsurancepremium,jdbcType=INTEGER},
+      thirdInsuranceAmount = #{thirdinsuranceamount,jdbcType=INTEGER},
+      thirdInsuranceRemarks = #{thirdinsuranceremarks,jdbcType=VARCHAR},
+      fourthInsurancePremium = #{fourthinsurancepremium,jdbcType=INTEGER},
+      fourthInsuranceAmount = #{fourthinsuranceamount,jdbcType=INTEGER},
+      fourthInsuranceRemarks = #{fourthinsuranceremarks,jdbcType=VARCHAR},
+      fifthInsurancePremium = #{fifthinsurancepremium,jdbcType=INTEGER},
+      fifthInsuranceAmount = #{fifthinsuranceamount,jdbcType=INTEGER},
+      fifthInsuranceRemarks = #{fifthinsuranceremarks,jdbcType=VARCHAR},
+      sixthInsurancePremium = #{sixthinsurancepremium,jdbcType=INTEGER},
+      sixthInsuranceAmount = #{sixthinsuranceamount,jdbcType=INTEGER},
+      sixthInsuranceRemarks = #{sixthinsuranceremarks,jdbcType=VARCHAR},
+      seventhInsurancePremium = #{seventhinsurancepremium,jdbcType=INTEGER},
+      seventhInsuranceAmount = #{seventhinsuranceamount,jdbcType=INTEGER},
+      seventhInsuranceRemarks = #{seventhinsuranceremarks,jdbcType=VARCHAR},
+      eighthInsurancePremium = #{eighthinsurancepremium,jdbcType=INTEGER},
+      eighthInsuranceAmount = #{eighthinsuranceamount,jdbcType=INTEGER},
+      eighthInsuranceRemarks = #{eighthinsuranceremarks,jdbcType=VARCHAR},
+      repairShopPremium = #{repairshoppremium,jdbcType=INTEGER},
+      repairShopAmount = #{repairshopamount,jdbcType=INTEGER},
+      repairShopRemarks = #{repairshopremarks,jdbcType=VARCHAR},
+      excludingDeductiblePremium = #{excludingdeductiblepremium,jdbcType=INTEGER},
+      excludingDeductibleAmount = #{excludingdeductibleamount,jdbcType=INTEGER},
+      excludingDeductibleRemarks = #{excludingdeductibleremarks,jdbcType=VARCHAR},
+      insuranceCompany = #{insurancecompany,jdbcType=VARCHAR},
+      insuranceCall = #{insurancecall,jdbcType=VARCHAR},
+      insurancePeriodStart = #{insuranceperiodstart,jdbcType=DATE},
+      insurancePeriodEnd = #{insuranceperiodend,jdbcType=DATE},
+      totalCost = #{totalcost,jdbcType=DECIMAL},
+      chargePerson = #{chargeperson,jdbcType=VARCHAR},
+      enclosure = #{enclosure,jdbcType=VARCHAR},
+      filename = #{filename,jdbcType=VARCHAR}
+    where insuranceNo = #{insuranceno,jdbcType=INTEGER}
+  </update>
+</mapper>

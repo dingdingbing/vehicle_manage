@@ -1,0 +1,32 @@
+package com.igeek.mapper;
+
+import com.igeek.pojo.Car;
+import com.igeek.pojo.example.CarExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CarMapper {
+    int countByExample(CarExample example);
+
+    int deleteByExample(CarExample example);
+
+    int deleteByPrimaryKey(Integer carno);
+
+    int insert(Car record);
+
+    int insertSelective(Car record);
+
+    List<Car> selectByExample(CarExample example);
+
+    Car selectByPrimaryKey(Integer carno);
+
+    int updateByExampleSelective(@Param("record") Car record, @Param("example") CarExample example);
+
+    int updateByExample(@Param("record") Car record, @Param("example") CarExample example);
+
+    int updateByPrimaryKeySelective(Car record);
+
+    int updateByPrimaryKey(Car record);
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)http://cn.colloa.com/test/view/formTaskflow.aspx?context=1028857&name=%e7%94%a8%e8%bd%a6%e7%94%b3%e8%af%b7* -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>车辆加油登记单</title>
+    <link th:href="@{/css/view.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <style>
+        .cke {
+        visibility: hidden;
+    }
+    </style>
+</head>
+<body id="colloaBody">
+<table style="min-width:950px;width:100%;height:100%;" cellpadding="0" cellspacing="0" border="0">
+    <tbody>
+    <tr valign="top">
+        <td>&nbsp;</td>
+        <td id="colloaForm">
+            <div class="formTaskflowContainer">
+                <form class="formTaskflow"  th:action="@{/carDispatch/carFuelApplicationAdd}" method="post" id="carFuelApplication">
+
+                    <div style="TEXT-ALIGN: center"><span style="FONT-SIZE: 20px"><strong>车辆加油登记单</strong></span></div>
+                    <div>
+                        <table class="tableListBorder" style="TABLE-LAYOUT: fixed" cellspacing="0" cellpadding="0" align="center"
+                               border="0">
+                            <colgroup>
+                                <col width="150">
+                                <col width="300">
+                                <col width="150">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请人</td>
+                                <td id="dbf.operator" dbf.type="required" dbf.source="editable,prompt:select sid,name from userX where stype=0 and statusX&gt;0 and name like '%[!prompt]%' order by name">
+                                    <input name="applicant" class="fieldEditable" >
+                                </td>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>申请日期</td>
+                                <td id="dbf.time2" dbf.type="date,required" dbf.source="date">
+                                    <input name="applicationdate" id="test1" class="fieldEditable" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>登记单号</td>
+                                <td id="dbf.division" dbf.type="required" dbf.source="form.fieldSource.division" dbf.key="0">
+                                    <input name="registrationnumber" placeholder="该单号由系统自动生成" readonly class="fieldEditable" >
+                                </td>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>车牌号</td>
+                                <td id="dbf.text0" dbf.type="required!0" dbf.source="select sid,sno from resourceX where modello='administration.vehicle' and statusX=1 order by sno"
+                                    dbf.key="">
+                                    <input name="carbrand"  class="fieldEditable" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>加油日期</td>
+                                <td id="dbf.time0" dbf.type="date,required" dbf.source="date">
+                                    <input name="refuelingdate" id="test2"  class="fieldEditable" >
+                                </td>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>加油容量(升)</td>
+                                <td id="dbf.number0" dbf.type="amount,required" dbf.source="">
+                                    <input id="e.dbf.number0" name="refuelingcapacity" class="fieldEditable textAmount" value="0">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="COLOR: rgb(255,0,0)">*</span>加油金额(元)</td>
+                                <td id="dbf.budget" dbf.type="amount,required" dbf.source="">
+                                    <input id="e.dbf.budget" name="fuelamount" class="fieldEditable textAmount" value="0">
+                                </td>
+                                <td style="TEXT-ALIGN: center" dbf.type="" dbf.source="">经办人</td>
+                                <td id="dbf.text1" dbf.type="" dbf.source="">
+                                    <input id="e.dbf.text1" name="chargeperson" class="fieldEditable">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="TEXT-ALIGN: center"><span style="FONT-SIZE: 14px">主题</span></td>
+                                <td id="主题" colspan="3" dbf.type="" dbf.source="">
+                                    <textarea  class="fieldEditable" style="HEIGHT: 80px" name="remarks"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fieldLable" rowspan="6" align="center">缩略图</td>
+                                <td id="dbf.thumbnails" style="PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px" rowspan="6" dbf.source="file.image">
+                                    <div id="e.dbf.thumbnails">
+                                        <img class="radius" style="WIDTH: 300px;height: 225px" border="0" id="imgs" th:src="@{/img/noThumb.jpg}" >
+                                    </div>
+                                    <input type="hidden" name="voucher" id="url_test">
+                                    <br>
+                                    <button type="button" class="layui-btn-sm" id="upload">
+                                        <i class="layui-icon">&#xe67c;</i>上传凭证
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>&nbsp;</div>
+                </form>
+            </div>
+
+            <br>
+            <div id="_vWorkflowActionsStatus" style="float:left;"></div>
+            <div id="_vWorkflowActionsShow" align="right">
+                <a id="submitBtn" class="button" style="cursor: pointer;" >确定</a>
+                <a id="cancelBtn" class="button" style="cursor: pointer;" >取消</a>
+            </div>
+            <br>
+
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['form','layer','jquery','upload','laydate'],function(){
+        form = layui.form;
+        layer = layui.layer;
+        $ = layui.jquery;
+        upload = layui.upload;
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#test1',
+        });
+
+        datemax=new Date();
+        laydate.render({
+            elem: '#test2'
+        });
+
+
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: '/upload' //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                if (res.code == 0) {
+                    layer.msg("文件上传成功", {icon: 1});
+                    console.log(res.data);
+                    //$("#imgs").append("<img src=http://"+res.data+" width='300px' height='225px' style='margin-left: 8px'>");
+                    $("#imgs").attr("src","http://"+res.data);
+                    $("#imgs").click(function () {
+                        window.open("http://"+res.data);
+                    });
+                    $("#url_test").val(res.data);
+                } else {
+                    layer.msg("文件上传失败", {icon: 2});
+                }
+            }
+            ,error: function(){
+                //请求异常回调
+
+            }
+        });
+        $(function () {
+            $("input").attr("autocomplete","off");
+        });
+
+        $("#submitBtn").click(function () {
+            if(confirm("是否提交表单")){
+                $("#carFuelApplication").submit();
+            }
+        });
+        $("#cancelBtn").click(function () {
+            if(confirm("是否取消提交表单，并关闭该页面")){
+                window.opener=null;
+                window.open('','_self');
+                window.close();
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>
