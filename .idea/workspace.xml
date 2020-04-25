@@ -6,82 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26299ea5-c098-45e0-9b2d-cdd56afcbaaa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/car/carMap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vehicle_manage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vehicle_manage.iml" afterDir="false" />
+    <list default="true" id="26299ea5-c098-45e0-9b2d-cdd56afcbaaa" name="Default Changelist" comment="完善了之前的bug，并且做好了车辆定位地图的功能，以及司机个人信息的证件照上传和字段的完善">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/commons/buttons.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/commons/cards.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/controller/CarLocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/controller/CarLocationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/controller/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/controller/PageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/controller/DriverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/mapper/CarlocationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/mapper/CarlocationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/mapper/DriverMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/mapper/DriverMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/pojo/Carlocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/pojo/Carlocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/pojo/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/pojo/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/pojo/example/CarlocationExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/pojo/example/CarlocationExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/pojo/example/DriverExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/pojo/example/DriverExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/service/ICarLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/service/ICarLocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/igeek/service/Impl/CarLocationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/igeek/service/Impl/CarLocationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/CarlocationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/CarlocationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/DriverMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/DriverMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/car/carApplicationEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/car/carApplicationEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/car/carApplicationTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/car/carApplicationTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/car/carLocation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/car/carLocation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/commons/common.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/commons/common.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carAccidentList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carAccidentList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carFuelApplicationEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carFuelApplicationEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carInspectionEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carInspectionEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carInspectionList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carInspectionList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carInsuranceEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carInsuranceEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carInsuranceList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carInsuranceList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carMaintainEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carMaintainEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carMaintainList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carMaintainList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carRefuelList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dispatch/carRefuelList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/driver/driverAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/driver/driverAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/driver/driverEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/driver/driverEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/driver/driverList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/driver/driverList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/hello.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/newHello.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tables.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tables01.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/controller/CarLocationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/controller/CarLocationController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/controller/TestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/mapper/DriverMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/mapper/DriverMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/pojo/Carlocation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/pojo/Carlocation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/pojo/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/pojo/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/CarlocationExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/CarlocationExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/CarlocationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/CarlocationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/CarlocationExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/CarlocationExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/DriverExample$Criteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/DriverExample$Criteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/DriverExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/DriverExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/DriverExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/pojo/example/DriverExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/service/ICarLocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/service/ICarLocationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/igeek/service/Impl/CarLocationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/igeek/service/Impl/CarLocationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/CarlocationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/CarlocationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/DriverMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/DriverMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/car/carApplicationEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/car/carApplicationEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/car/carApplicationTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/car/carApplicationTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/car/carLocation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/car/carLocation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/commons/common.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/commons/common.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carAccidentList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carAccidentList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carFuelApplicationEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carFuelApplicationEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carInspectionEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carInspectionEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carInspectionList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carInspectionList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carInsuranceEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carInsuranceEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carInsuranceList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carInsuranceList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carMaintainEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carMaintainEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carMaintainList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carMaintainList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/dispatch/carRefuelList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/dispatch/carRefuelList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/driver/driverAdd.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/driver/driverAdd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/driver/driverEdit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/driver/driverEdit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/driver/driverList.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/driver/driverList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/error/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tables.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/tables01.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/hello.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/newHello.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +74,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1XnJBacPc49yiHsu4ci7BXtMw5s" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -153,7 +89,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/car" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -167,11 +103,11 @@
       <recent name="com.igeek" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\IDEA\vehicle_manage\src\main\resources\templates" />
       <recent name="F:\IDEA\vehicle_manage\src\main\resources\templates\car" />
       <recent name="F:\IDEA\vehicle_manage\src\main\resources\mybatis\mapper" />
       <recent name="F:\IDEA\vehicle_manage\src\main\resources\templates\driver" />
       <recent name="D:\IDEA\vehicle_manage\src\main\resources\templates\dispatch" />
-      <recent name="D:\IDEA\vehicle_manage\src\main\java\com\igeek\pojo" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.igeek.mapper" />
@@ -180,6 +116,7 @@
       <recent name="com.igeek.controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\IDEA\vehicle_manage\src\main\resources\templates\commons" />
       <recent name="D:\IDEA\vehicle_manage\src\main\resources\mybatis\mapper" />
       <recent name="D:\IDEA\vehicle_manage\src\main\resources\static" />
       <recent name="D:\IDEA\vehicle_manage\src\main\resources\public" />
@@ -401,46 +338,30 @@
       <workItem from="1587646486020" duration="3339000" />
       <workItem from="1587787397653" duration="2256000" />
       <workItem from="1587789705883" duration="20000" />
-      <workItem from="1587789778537" duration="14953000" />
+      <workItem from="1587789778537" duration="17888000" />
     </task>
+    <task id="LOCAL-00001" summary="完善了之前的bug，并且做好了车辆定位地图的功能，以及司机个人信息的证件照上传和字段的完善">
+      <created>1587804939192</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587804939192</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="VehicleManageApplicationTests_contextLoads - 2020.01.07 at 16h 35m 10s.xml">
-      <configuration name="VehicleManageApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_contextLoads - 2020.01.07 at 16h 36m 23s.xml">
-      <configuration name="VehicleManageApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_contextLoads - 2020.01.07 at 16h 49m 02s.xml">
-      <configuration name="VehicleManageApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_contextLoads - 2020.01.07 at 17h 27m 08s.xml">
-      <configuration name="VehicleManageApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_Test01 - 2020.01.07 at 18h 17m 29s.xml">
-      <configuration name="VehicleManageApplicationTests.Test01" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_Test01 - 2020.01.07 at 18h 18m 14s.xml">
-      <configuration name="VehicleManageApplicationTests.Test01" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_Test02 - 2020.01.08 at 21h 44m 11s.xml">
-      <configuration name="VehicleManageApplicationTests.Test02" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_Test03 - 2020.01.08 at 21h 46m 58s.xml">
-      <configuration name="VehicleManageApplicationTests.Test03" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_contextLoads - 2020.04.05 at 13h 17m 25s.xml">
-      <configuration name="VehicleManageApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="VehicleManageApplicationTests_contextLoads - 2020.04.05 at 13h 32m 15s.xml">
-      <configuration name="VehicleManageApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完善了之前的bug，并且做好了车辆定位地图的功能，以及司机个人信息的证件照上传和字段的完善" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善了之前的bug，并且做好了车辆定位地图的功能，以及司机个人信息的证件照上传和字段的完善" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="565" y="225" key="#Notifications" timestamp="1587805156059">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="565" y="225" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1587805156059" />
     <state x="488" y="69" key="#com.intellij.ide.util.MemberChooser" timestamp="1587794733363">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -449,10 +370,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587803705868" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1581678798164">
+    <state x="253" y="0" key="CommitChangelistDialog2" timestamp="1587805138625">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1581678798164" />
+    <state x="253" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587805138625" />
+    <state x="129" y="54" key="DiffContextDialog" timestamp="1587805323594">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="129" y="54" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1587805323594" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1587805388590">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587805388590" />
+    <state x="536" y="261" key="Github.ShareDialog" timestamp="1587805466174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="536" y="261" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1587805466174" />
     <state width="1323" height="184" key="GridCell.Tab.0.bottom" timestamp="1587803746088">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -505,10 +438,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587789726487" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1587805346008">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587805346008" />
     <state x="368" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1582184925566">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="368" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1582184925566" />
+    <state x="476" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587805696313">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="476" y="276" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587805696313" />
     <state x="57" y="65" key="new project wizard" timestamp="1583583035748">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

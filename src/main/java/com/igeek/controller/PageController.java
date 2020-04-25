@@ -20,52 +20,56 @@ public class PageController {
     @Autowired
     private IDriverService driverService;
 
-    @RequestMapping({"/index","/index.html"})
-    public String toIndex(Model model){
-        model.addAttribute("msg","hello,shiro");
+    @RequestMapping({"/index", "/index.html"})
+    public String toIndex(Model model) {
+        model.addAttribute("msg", "hello,shiro");
         return "index";
     }
 
     @RequestMapping("/driver/add")
-    public String add(){
+    public String add() {
         return "driver/driverAdd";
     }
 
-    @RequestMapping({"/login","/","/login.html"})
-    public String login(){
+    @RequestMapping({"/login", "/", "/login.html"})
+    public String login() {
         return "login";
     }
 
     @RequestMapping("/unauthorized")
     @ResponseBody
-    public String unauthorized(){
+    public String unauthorized() {
         return "未授权无法访问该页面";
     }
 
     @RequestMapping("/toregister")
-    public String toregister(){
+    public String toregister() {
 
         return "register";
     }
 
     @RequestMapping("/tables")
-    public String tables(Model model){
+    public String tables(Model model) {
         List<Driver> drivers = driverService.selectAllDriver();
-        model.addAttribute("drivers",drivers);
+        model.addAttribute("drivers", drivers);
         return "tables";
     }
 
     @RequestMapping("/driver")
-    public String driverList(Model model){
+    public String driverList(Model model) {
         List<Driver> drivers = driverService.selectAllDriver();
-        model.addAttribute("drivers",drivers);
+        model.addAttribute("drivers", drivers);
         return "driver/driverList";
     }
 
+    @RequestMapping("/buttons")
+    public String buttons() {
+        return "commons/buttons";
+    }
 
-    @RequestMapping("/carTest")
-    public String carTest(){
-        return "car/carTest";
+    @RequestMapping("/cards")
+    public String cards() {
+        return "commons/cards";
     }
 
 }
