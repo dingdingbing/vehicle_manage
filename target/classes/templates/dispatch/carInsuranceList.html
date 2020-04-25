@@ -58,8 +58,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table id="carFuelTable" >
-                <table class="table table-bordered"  width="100%" cellspacing="0">
+                <table id="dataTable" class="table table-bordered"  width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>主题</th>
@@ -82,7 +81,7 @@
                   </tfoot>
                   <tbody >
                     <tr th:each="insurance:${insurances}">
-                      <td><a th:text="${insurance.getTheme()}" th:href="@{/carDispatch/carInsuranceApplicationEdit/}+${insurance.insuranceno}" target="_blank"></a><input type="hidden"  th:value="${insurance.getInsuranceno()}"></td>
+                      <td><a th:text="${insurance.getTheme()}" th:href="@{/carDispatch/carInsuranceEdit/}+${insurance.insuranceno}" target="_blank"></a><input type="hidden"  th:value="${insurance.getInsuranceno()}"></td>
                       <td th:text="${insurance.getCarbrand()}"></td>
                       <td th:text="${#dates.format(insurance.getInsuranceperiodstart(),'yyyy-MM-dd')+'~'+#dates.format(insurance.getInsuranceperiodend(),'yyyy-MM-dd')}"></td>
                       <td th:text="${insurance.getTotalcost()}"></td>
@@ -95,7 +94,6 @@
                       </td>
                     </tr>
                   </tbody>
-                </table>
                 </table>
               </div>
             </div>

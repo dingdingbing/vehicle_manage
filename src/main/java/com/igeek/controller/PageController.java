@@ -62,10 +62,6 @@ public class PageController {
         return "driver/driverList";
     }
 
-    @RequestMapping("/carLocation")
-    public String carLocation(){
-        return "car/carLocation";
-    }
 
     @RequestMapping("/carTest")
     public String carTest(){

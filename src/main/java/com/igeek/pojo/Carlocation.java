@@ -13,6 +13,8 @@ public class Carlocation {
 
     private BigDecimal latitude;
 
+    private String carphone;
+
     public Integer getCarno() {
         return carno;
     }
@@ -53,6 +55,14 @@ public class Carlocation {
         this.latitude = latitude;
     }
 
+    public String getCarphone() {
+        return carphone;
+    }
+
+    public void setCarphone(String carphone) {
+        this.carphone = carphone == null ? null : carphone.trim();
+    }
+
     @Override
     public String toString() {
         return "Carlocation{" +
@@ -61,6 +71,7 @@ public class Carlocation {
                 ", carbrand='" + carbrand + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
+                ", carphone='" + carphone + '\'' +
                 '}';
     }
 }

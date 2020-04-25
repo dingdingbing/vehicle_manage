@@ -18,4 +18,12 @@ public class CarLocationServiceImpl implements ICarLocationService {
     public List<Carlocation> list() {
         return mapper.selectByExample(null);
     }
+
+    @Override
+    public Carlocation getLocation(Integer id) {
+        Carlocation carlocation = mapper.selectByPrimaryKey(id);
+        return carlocation;
+    }
+
+
 }

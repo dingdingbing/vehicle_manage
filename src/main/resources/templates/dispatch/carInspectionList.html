@@ -58,8 +58,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table id="carFuelTable" >
-                <table class="table table-bordered"  width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>主题</th>
@@ -88,14 +87,13 @@
                       <td th:text="${#dates.format(inspection.getNextinspectiondate(),'yyyy-MM-dd')}"></td>
                       <td th:text="${inspection.getCost()}"></td>
                       <td >
-                        <a th:href="@{/carDispatch/carInspectionApplication}" target="_blank" class="btn btn-sm btn-success">车辆保险登记</a>
+                        <a th:href="@{/carDispatch/carInspectionApplication}" target="_blank" class="btn btn-sm btn-success">车辆年检登记</a>
                         <a th:href="@{/carDispatch/carInspectionEdit/}+${inspection.inspectionno}" target="_blank" class="btn btn-sm btn-primary">编辑</a>
                         <!--<a th:href="@{/carDispatch/carFuelApplicationDelete/}+${fuel.registrationnumber}" class="btn btn-sm btn-danger">删除</a>-->
                         <button th:value="${inspection.inspectionno}" class="btn btn-sm btn-danger deleteFuelApp">删除</button>
                       </td>
                     </tr>
                   </tbody>
-                </table>
                 </table>
               </div>
             </div>

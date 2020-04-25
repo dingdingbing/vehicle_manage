@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{width:100%;height:500px;}
+        p{margin-left:5px; font-size:14px;}
+    </style>
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=EA0Cxg4pbf9CxPjR3FGbQxov2C6SbTap"></script>
+    <title>车辆实时定位</title>
+</head>
+<body>
+<div id="allmap"></div>
+<p>滚动鼠标滚轮即可放大或缩小地图，点击地图上的标注即可获得该车辆的信息</p>
+<span>当前的车辆id为[[${carLocation.getCarno()}]]</span>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var longitude = [[${carLocation.getLongitude()}]];
+    var latitude = [[${carLocation.getLatitude()}]];
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(longitude,latitude);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    map.centerAndZoom(point, 15);
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title : "当前车辆信息如下" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+    }
+    var infoWindow = new BMap.InfoWindow("车型号为:[[${carLocation.getCarname()}]], 车牌号为：[[${carLocation.getCarbrand()}]], 车载电话为：[[${carLocation.getCarphone()}]]", opts);  // 创建信息窗口对象
+    marker.addEventListener("click", function(){
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    });
+    setTimeout(function(){
+        map.setZoom(16);
+    }, 2000);  //2秒后放大到14级
+    map.enableScrollWheelZoom(true);
+</script>

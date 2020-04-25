@@ -91,20 +91,12 @@
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" th:href="@{/carLocation}" target="_blank">
+    <li th:class="${active=='carLocation.html'?'nav-item active':'nav-item'}">
+        <a class="nav-link" th:href="@{/car/locations}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>车辆实时定位信息</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
-    <li th:class="${active=='tables.html'?'nav-item active':'nav-item'}">
-        <a class="nav-link" th:href="@{/tables}" >
-            <i class="fas fa-fw fa-table"></i>
-            <span>司机个人信息</span></a>
-    </li>
-
-    <!-- 测试 -->
     <!--<li th:class="${active=='driverList.html'?'nav-item active':'nav-item'}">-->
     <li th:class="${active=='driverList.html'?'nav-item active':'nav-item'}">
         <a class="nav-link" th:href="@{/driver}">
@@ -277,7 +269,7 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><shiro:principal property="username"/></span>
-                <img class="img-profile rounded-circle" src="http://q3q8oh444.bkt.clouddn.com/1801cc05-374e-4785-969c-d48a8ceab1a8.ico">
+                <img class="img-profile rounded-circle" src="http://file.ddbing.cn/1801cc05-374e-4785-969c-d48a8ceab1a8.ico">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

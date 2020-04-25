@@ -21,6 +21,14 @@ public class Driver {
 
     private Date birthday;
 
+    private String sfzzm;
+
+    private String sfzfm;
+
+    private String jszzm;
+
+    private String jszfm;
+
     public Integer getDriverid() {
         return driverid;
     }
@@ -93,6 +101,38 @@ public class Driver {
         this.birthday = birthday;
     }
 
+    public String getSfzzm() {
+        return sfzzm;
+    }
+
+    public void setSfzzm(String sfzzm) {
+        this.sfzzm = sfzzm == null ? null : sfzzm.trim();
+    }
+
+    public String getSfzfm() {
+        return sfzfm;
+    }
+
+    public void setSfzfm(String sfzfm) {
+        this.sfzfm = sfzfm == null ? null : sfzfm.trim();
+    }
+
+    public String getJszzm() {
+        return jszzm;
+    }
+
+    public void setJszzm(String jszzm) {
+        this.jszzm = jszzm == null ? null : jszzm.trim();
+    }
+
+    public String getJszfm() {
+        return jszfm;
+    }
+
+    public void setJszfm(String jszfm) {
+        this.jszfm = jszfm == null ? null : jszfm.trim();
+    }
+
     @Override
     public String toString() {
         return "Driver{" +
@@ -105,6 +145,10 @@ public class Driver {
                 ", address='" + address + '\'' +
                 ", sex=" + sex +
                 ", birthday=" + birthday +
+                ", sfzzm='" + sfzzm + '\'' +
+                ", sfzfm='" + sfzfm + '\'' +
+                ", jszzm='" + jszzm + '\'' +
+                ", jszfm='" + jszfm + '\'' +
                 '}';
     }
 }

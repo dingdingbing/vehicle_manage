@@ -206,8 +206,8 @@
                         <tr>
                             <td style="TEXT-ALIGN: right">附件:</td>
                             <td id="attachments" dbf.source="files">
-                                <input type="hidden" name="enclosure" id="url_test">
-                                <input id="enclosureId1" type="hidden"  name="filename"><a id="enclosureId" target="_blank" th:text="${insurance.getFilename()}" th:href="${#strings.isEmpty(insurance.getEnclosure())?'':'http://'+insurance.getEnclosure()}" ></a>
+                                <input type="hidden" name="enclosure" id="url_test" th:value="${insurance.getEnclosure()==''?'':insurance.getEnclosure()}">
+                                <input id="enclosureId1" type="hidden"  name="filename" th:value="${insurance.getFilename()==''?'':insurance.getFilename()}" ><a id="enclosureId" target="_blank" th:text="${insurance.getFilename()}" th:href="${#strings.isEmpty(insurance.getEnclosure())?'':'http://'+insurance.getEnclosure()}" ></a>
                                 <button type="button" class="layui-btn-sm" id="upload" style="float: right">
                                     上传附件
                                 </button>

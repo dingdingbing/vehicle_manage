@@ -2,10 +2,10 @@ package com.igeek.mapper;
 
 import com.igeek.pojo.Carlocation;
 
+import java.util.List;
+
 import com.igeek.pojo.example.CarlocationExample;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 public interface CarlocationMapper {
     int countByExample(CarlocationExample example);

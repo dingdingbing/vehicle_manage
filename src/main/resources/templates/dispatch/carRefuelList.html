@@ -53,13 +53,12 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">用车申请表</h6>
+              <h6 class="m-0 font-weight-bold text-primary">车辆加油登记列表</h6>
 
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table id="carFuelTable" >
-                <table class="table table-bordered"  width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>主题</th>
@@ -84,7 +83,7 @@
                   </tfoot>
                   <tbody >
                     <tr th:each="fuel:${fuels}">
-                      <td><a th:text="${fuel.getRemarks()}" th:href="@{/car/carFuelingEdit/}+${fuel.registrationnumber}" target="_blank"></a><input type="hidden"  th:value="${fuel.getRegistrationnumber()}"></td>
+                      <td><a th:text="${fuel.getRemarks()}" th:href="@{/carDispatch/carFuelApplicationEdit/}+${fuel.registrationnumber}" target="_blank"></a><input type="hidden"  th:value="${fuel.getRegistrationnumber()}"></td>
                       <td th:text="${fuel.getCarbrand()}"></td>
                       <td th:text="${#dates.format(fuel.getRefuelingdate(),'yyyy-MM-dd')}"></td>
                       <td th:text="${fuel.getRefuelingcapacity()}"></td>
@@ -98,7 +97,6 @@
                       </td>
                     </tr>
                   </tbody>
-                </table>
                 </table>
               </div>
             </div>

@@ -11,6 +11,10 @@
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="sfzzm" property="sfzzm" jdbcType="VARCHAR" />
+    <result column="sfzfm" property="sfzfm" jdbcType="VARCHAR" />
+    <result column="jszzm" property="jszzm" jdbcType="VARCHAR" />
+    <result column="jszfm" property="jszfm" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    driverId, driverName, driverAge, license, drivingAge, assessment, address, sex, birthday
+    driverId, driverName, driverAge, license, drivingAge, assessment, address, sex, birthday, 
+    sfzzm, sfzfm, jszzm, jszfm
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.igeek.pojo.example.DriverExample" >
     select
@@ -88,7 +93,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from driver
     where driverId = #{driverid,jdbcType=INTEGER}
@@ -106,12 +111,14 @@
   <insert id="insert" parameterType="com.igeek.pojo.Driver" >
     insert into driver (driverId, driverName, driverAge, 
       license, drivingAge, assessment, 
-      address, sex, birthday
-      )
+      address, sex, birthday, 
+      sfzzm, sfzfm, jszzm, 
+      jszfm)
     values (#{driverid,jdbcType=INTEGER}, #{drivername,jdbcType=VARCHAR}, #{driverage,jdbcType=INTEGER}, 
       #{license,jdbcType=VARCHAR}, #{drivingage,jdbcType=INTEGER}, #{assessment,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}
-      )
+      #{address,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, 
+      #{sfzzm,jdbcType=VARCHAR}, #{sfzfm,jdbcType=VARCHAR}, #{jszzm,jdbcType=VARCHAR}, 
+      #{jszfm,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.igeek.pojo.Driver" >
     insert into driver
@@ -143,6 +150,18 @@
       <if test="birthday != null" >
         birthday,
       </if>
+      <if test="sfzzm != null" >
+        sfzzm,
+      </if>
+      <if test="sfzfm != null" >
+        sfzfm,
+      </if>
+      <if test="jszzm != null" >
+        jszzm,
+      </if>
+      <if test="jszfm != null" >
+        jszfm,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="driverid != null" >
@@ -171,6 +190,18 @@
       </if>
       <if test="birthday != null" >
         #{birthday,jdbcType=DATE},
+      </if>
+      <if test="sfzzm != null" >
+        #{sfzzm,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzfm != null" >
+        #{sfzfm,jdbcType=VARCHAR},
+      </if>
+      <if test="jszzm != null" >
+        #{jszzm,jdbcType=VARCHAR},
+      </if>
+      <if test="jszfm != null" >
+        #{jszfm,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -210,6 +241,18 @@
       <if test="record.birthday != null" >
         birthday = #{record.birthday,jdbcType=DATE},
       </if>
+      <if test="record.sfzzm != null" >
+        sfzzm = #{record.sfzzm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfzfm != null" >
+        sfzfm = #{record.sfzfm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jszzm != null" >
+        jszzm = #{record.jszzm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jszfm != null" >
+        jszfm = #{record.jszfm,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -218,14 +261,18 @@
   <update id="updateByExample" parameterType="map" >
     update driver
     set driverId = #{record.driverid,jdbcType=INTEGER},
-      driverName = #{record.drivername,jdbcType=VARCHAR},
-      driverAge = #{record.driverage,jdbcType=INTEGER},
-      license = #{record.license,jdbcType=VARCHAR},
-      drivingAge = #{record.drivingage,jdbcType=INTEGER},
-      assessment = #{record.assessment,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=INTEGER},
-      birthday = #{record.birthday,jdbcType=DATE}
+    driverName = #{record.drivername,jdbcType=VARCHAR},
+    driverAge = #{record.driverage,jdbcType=INTEGER},
+    license = #{record.license,jdbcType=VARCHAR},
+    drivingAge = #{record.drivingage,jdbcType=INTEGER},
+    assessment = #{record.assessment,jdbcType=VARCHAR},
+    address = #{record.address,jdbcType=VARCHAR},
+    sex = #{record.sex,jdbcType=INTEGER},
+    birthday = #{record.birthday,jdbcType=DATE},
+    sfzzm = #{record.sfzzm,jdbcType=VARCHAR},
+    sfzfm = #{record.sfzfm,jdbcType=VARCHAR},
+    jszzm = #{record.jszzm,jdbcType=VARCHAR},
+    jszfm = #{record.jszfm,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,6 +304,18 @@
       <if test="birthday != null" >
         birthday = #{birthday,jdbcType=DATE},
       </if>
+      <if test="sfzzm != null" >
+        sfzzm = #{sfzzm,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzfm != null" >
+        sfzfm = #{sfzfm,jdbcType=VARCHAR},
+      </if>
+      <if test="jszzm != null" >
+        jszzm = #{jszzm,jdbcType=VARCHAR},
+      </if>
+      <if test="jszfm != null" >
+        jszfm = #{jszfm,jdbcType=VARCHAR},
+      </if>
     </set>
     where driverId = #{driverid,jdbcType=INTEGER}
   </update>
@@ -269,7 +328,11 @@
       assessment = #{assessment,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=INTEGER},
-      birthday = #{birthday,jdbcType=DATE}
+      birthday = #{birthday,jdbcType=DATE},
+      sfzzm = #{sfzzm,jdbcType=VARCHAR},
+      sfzfm = #{sfzfm,jdbcType=VARCHAR},
+      jszzm = #{jszzm,jdbcType=VARCHAR},
+      jszfm = #{jszfm,jdbcType=VARCHAR}
     where driverId = #{driverid,jdbcType=INTEGER}
   </update>
 </mapper>

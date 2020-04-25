@@ -1,12 +1,11 @@
 package com.igeek.mapper;
 
 import com.igeek.pojo.Driver;
-import com.igeek.pojo.example.DriverExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
+import com.igeek.pojo.example.DriverExample;
+import org.apache.ibatis.annotations.Param;
+
 public interface DriverMapper {
     int countByExample(DriverExample example);
 

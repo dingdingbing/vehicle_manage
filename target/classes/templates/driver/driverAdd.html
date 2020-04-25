@@ -3,32 +3,35 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>新增司机</title>
+    <title>新增司机</title>
 
-  <!-- Custom fonts for this template -->
-  <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+    <!--layui的css样式-->
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" media="all">
 
-  <!-- Custom styles for this page -->
-  <link th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}" rel="stylesheet">
 
 
 </head>
 
 <body id="page-top">
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
     <!-- Sidebar -->
     <div th:insert="~{commons/common::sidebar(active='tables.html')}"></div>
@@ -37,146 +40,442 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-      <!-- Main Content -->
-      <div id="content">
+        <!-- Main Content -->
+        <div id="content">
 
-        <!-- Topbar -->
+            <!-- Topbar -->
 
 
-        <div th:insert="~{commons/common::topbar}"></div>
-        <!-- End of Topbar -->
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+            <div th:insert="~{commons/common::topbar}"></div>
+            <!-- End of Topbar -->
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For
+                    more information about DataTables, please visit the <a target="_blank"
+                                                                           href="https://datatables.net">official
+                        DataTables documentation</a>.</p>
 
-          <form th:action="@{/driver/insert}" method="post">
-            <div class="form-group">
-              <label>姓名</label>
-              <input type="text" name="drivername" class="form-control" placeholder="姓名">
-            </div>
-            <div class="form-group">
-              <label>年龄</label>
-              <input type="text" class="form-control" name="driverage" placeholder="22">
-            </div>
-            <div class="form-group">
-              <label>驾龄</label>
-              <input type="text" class="form-control" name="drivingage" placeholder="22">
-            </div>
-            <div class="form-group">
-              <label>性别</label><br/>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="sex"  value="1" checked>
-                <label class="form-check-label">男</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="sex"  value="0">
-                <label class="form-check-label">女</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>驾照</label>
-              <select class="form-control" name="license">
-                <option th:text="请选择"></option>
-                <option th:text="A1"></option>
-                <option th:text="A2"></option>
-                <option th:text="A3"></option>
-                <option th:text="B1"></option>
-                <option th:text="B2"></option>
-                <option th:text="C1"></option>
-                <option th:text="C2"></option>
-              </select>
-            </div>
+                <form id="driverAdd" th:action="@{/driver/insert}" method="post">
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="hidden" name="driverid">
+                        <input type="text" name="drivername" class="form-control" placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label>年龄</label>
+                        <input type="text" class="form-control" name="driverage" placeholder="22">
+                    </div>
+                    <div class="form-group">
+                        <label>驾龄</label>
+                        <input type="text" class="form-control" name="drivingage" placeholder="22">
+                    </div>
+                    <div class="form-group">
+                        <label>性别</label><br/>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sex" value="1" checked>
+                            <label class="form-check-label">男</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sex" value="0">
+                            <label class="form-check-label">女</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>驾照</label>
+                        <select class="form-control" name="license">
+                            <option th:text="请选择"></option>
+                            <option th:text="A1"></option>
+                            <option th:text="A2"></option>
+                            <option th:text="A3"></option>
+                            <option th:text="B1"></option>
+                            <option th:text="B2"></option>
+                            <option th:text="C1"></option>
+                            <option th:text="C2" selected></option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-              <label>考核</label>
-              <select class="form-control" name="assessment">
-                <option th:text="请选择"></option>
-                <option th:text="优秀"></option>
-                <option th:text="良好"></option>
-                <option th:text="中等"></option>
-                <option th:text="合格"></option>
-                <option th:text="不合格"></option>
-              </select>
-            </div>
+                    <div class="form-group">
+                        <label>考核</label>
+                        <select class="form-control" name="assessment">
+                            <option th:text="请选择"></option>
+                            <option th:text="优秀"></option>
+                            <option th:text="良好"></option>
+                            <option th:text="中等"></option>
+                            <option th:text="合格"></option>
+                            <option th:text="不合格"></option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-              <label>出生日期</label>
-              <input type="text" class="form-control" id="test1" name="birthday" placeholder="默认是2019/12/28，但是可以在配置文件中修改spring.mvc.date-format=自己要加的格式，这里请输入2019-12-28">
-            </div>
+                    <div class="form-group">
+                        <label>出生日期</label>
+                        <input type="text" class="form-control" id="test1" name="birthday"
+                               placeholder="默认是2019/12/28，但是可以在配置文件中修改spring.mvc.date-format=自己要加的格式，这里请输入2019-12-28">
+                    </div>
 
-            <div class="form-group">
-              <label>住址</label>
-              <input type="text" class="form-control" name="address" placeholder="安徽宣城xxx">
+                    <div class="form-group">
+                        <label>住址</label>
+                        <input type="text" class="form-control" name="address" placeholder="安徽宣城xxx">
+                    </div>
+
+                    <input type="hidden" id="sfzzm" name="sfzzm">
+                    <input type="hidden" id="jszfm" name="jszfm">
+                    <input type="hidden" id="jszzm" name="jszzm">
+                    <input type="hidden" id="sfzfm" name="sfzfm">
+
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">请上传相对应的图片信息</div>
+
+                        <!-- Table -->
+                        <table class="table">
+                            <colgroup>
+                                <col width="200">
+                                <col width="200">
+                                <col width="200">
+                                <col width="200">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="upload01">上传身份证正面照片</button>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="upload02">上传身份证反面照片</button>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="upload03">上传驾驶证正面照片</button>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="layui-upload">
+                                        <button type="button" class="layui-btn" id="upload04">上传驾驶证反面照片</button>
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="layui-upload-list">
+
+                                        <img class="layui-upload-img" id="demo1" style="width: 100%;height: auto"
+                                             th:src="@{/img/noThumb.jpg}">
+                                        <p id="demoText1"></p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-upload-list">
+
+                                        <img class="layui-upload-img" id="demo2" style="width: 100%;height: auto"
+                                             th:src="@{/img/noThumb.jpg}">
+                                        <p id="demoText2"></p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-upload-list">
+
+                                        <img class="layui-upload-img" id="demo3" style="width: 100%;height: auto"
+                                             th:src="@{/img/noThumb.jpg}">
+                                        <p id="demoText3"></p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-upload-list">
+
+                                        <img class="layui-upload-img" id="demo4" style="width: 100%;height: auto"
+                                             th:src="@{/img/noThumb.jpg}">
+                                        <p id="demoText4"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary">添加</button>
+                    <a th:href="@{/driver}" class="btn btn-primary">取消</a>
+                </form>
+
             </div>
-            <button type="submit" class="btn btn-primary">添加</button>
-            <a th:href="@{/driver}" class="btn btn-primary">取消</a>
-          </form>
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- /.container-fluid -->
+        <!-- End of Main Content -->
 
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2019</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
 
-  </div>
-  <!-- End of Page Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
-  </a>
+</a>
 
-  <div th:insert="~{commons/common::logoutbar}"></div>
+<div th:insert="~{commons/common::logoutbar}"></div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- Bootstrap core JavaScript-->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+<!-- Core plugin JavaScript-->
+<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script th:src="@{/js/sb-admin-2.min.js}"></script>
+<!-- Custom scripts for all pages-->
+<script th:src="@{/js/sb-admin-2.min.js}"></script>
 
-  <!-- Page level plugins -->
-  <script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
-  <script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+<!-- Page level plugins -->
+<script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
 
-  <!-- Page level custom scripts -->
-  <script th:src="@{/js/demo/datatables-demo.js}"></script>
+<!-- Page level custom scripts -->
+<script th:src="@{/js/demo/datatables-demo.js}"></script>
 
-  <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
-  <script>
-    layui.use(['laydate','jquery'], function() {
-      var laydate = layui.laydate;
-      $=layui.jquery;
-      datemax=new Date();
-      laydate.render({
-        elem: '#test1',
-        max:'datemax'
-      });
-      $(function () {
-        $("input").attr("autocomplete","off");
-      });
+<script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+<script>
+    layui.use(['laydate', 'upload'], function () {
+        var laydate = layui.laydate;
+        var $ = layui.jquery;
+        var upload = layui.upload;
+
+        datemax = new Date();
+        laydate.render({
+            elem: '#test1',
+            max: 'datemax'
+        });
+        //layui上传组件1  身份证正面照片
+        var uploadInst1 = upload.render({
+            elem: '#upload01'
+            , url: '/upload' //改成您自己的上传接口
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                    // $('#sfzzm').attr('value', result); //赋值
+                    console.log("result===>" + result)
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                $('#sfzzm').attr('value', res.data); //赋值
+                return layer.msg('身份证正面照片上传成功');
+                //上传成功
+
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst1.upload();
+                });
+            }
+        });
+
+        //上传组件2  身份证反面照片
+        var uploadInst2 = upload.render({
+            elem: '#upload02'
+            , url: '/upload' //改成您自己的上传接口
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo2').attr('src', result); //图片链接（base64）
+                    //  $('#sfzfm').attr('value', result); //赋值
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                $('#sfzfm').attr('value', res.data); //赋值
+                return layer.msg('身份证反面照片上传成功');
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText2');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst2.upload();
+                });
+            }
+        });
+
+        //上传组件3  驾驶证正面照片
+        var uploadInst3 = upload.render({
+            elem: '#upload03'
+            , url: '/upload' //改成您自己的上传接口
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo3').attr('src', result); //图片链接（base64）
+                    //  $('#jszzm').attr('value', result); //赋值
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                $('#jszzm').attr('value', res.data); //赋值
+                return layer.msg('驾驶证正面照片上传成功');
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText3');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst3.upload();
+                });
+            }
+        });
+
+        //上传组件4  驾驶证反面照片
+        var uploadInst4 = upload.render({
+            elem: '#upload04'
+            , url: '/upload' //改成您自己的上传接口
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo4').attr('src', result); //图片链接（base64）
+                    //  $('#jszfm').attr('value', result); //赋值
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                $('#jszfm').attr('value', res.data); //赋值
+                return layer.msg('驾驶证反面照片上传成功');
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText4');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst4.upload();
+                });
+            }
+        });
+
+    });
+    $(function () {
+        $("input").attr("autocomplete", "off");
     });
 
-   </script>
+</script>
+
+<script th:src="@{/vendor/jquery/jquery.validate.js}"></script>
+
+
+<script type="text/javascript">
+    $.validator.setDefaults({
+        showErrors: function (map, list) {
+
+            this.currentElements.removeAttr("title").removeClass("ui-state-highlight").removeClass("error");
+
+            $.each(list, function (index, error) {
+                $(error.element)
+                    .attr("title", error.message).addClass("ui-state-highlight").addClass("error");
+                $(error.element).tooltip({
+                    openn: true,
+                    position: {
+                        my: "left top",
+                        at: "right+5 top-5"
+                    }
+                });
+            });
+        }
+    });
+    $.extend($.validator.messages, {
+        required: "必选字段",
+        remote: "请修正该字段",
+        email: "请输入正确格式的电子邮件",
+        url: "请输入合法的网址",
+        date: "请输入合法的日期",
+        dateISO: "请输入合法的日期 (ISO).",
+        number: "请输入合法的数字",
+        digits: "只能输入整数",
+        creditcard: "请输入合法的信用卡号",
+        equalTo: "请再次输入相同的值",
+        accept: "请输入拥有合法后缀名的字符串",
+        maxlength: $.validator.format("请输入一个长度最多是 {0} 的字符串"),
+        minlength: $.validator.format("请输入一个长度最少是 {0} 的字符串"),
+        rangelength: $.validator.format("请输入一个长度介于 {0} 和 {1} 之间的字符串"),
+        range: $.validator.format("请输入一个介于 {0} 和 {1} 之间的值"),
+        max: $.validator.format("请输入一个最大为 {0} 的值"),
+        min: $.validator.format("请输入一个最小为 {0} 的值")
+    });
+    $("#driverAdd").validate({
+        rules: {
+            drivername: {
+                required: true,
+                maxlength: 5,
+                minlength: 1
+            },
+            driverage: {
+                required: true,
+                digits: true,
+                max: 100,
+                min: 22
+            },
+            drivingage: {
+                required: true,
+                digits: true,
+                min: 1,
+                max: 70
+            },
+            license: {
+                required: true
+            }
+        },
+        messages: {
+            drivername: {
+                required: "司机名不能为空"
+            },
+            driverage: {
+                required: "司机年龄不能为空,且必须为整数"
+            },
+            drivingage: {
+                required: "司机驾龄不能为空"
+            },
+            license: {
+                required: "司机驾照等级不能为空"
+            }
+        },
+
+        submitHandler: function (form) {
+            //验证通过后进行注册
+            form.submit();
+        }
+    })
+
+</script>
 
 </body>
 

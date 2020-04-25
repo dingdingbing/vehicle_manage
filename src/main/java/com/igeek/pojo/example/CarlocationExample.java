@@ -424,6 +424,76 @@ public class CarlocationExample {
             addCriterion("latitude not between", value1, value2, "latitude");
             return (Criteria) this;
         }
+
+        public Criteria andCarphoneIsNull() {
+            addCriterion("carPhone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneIsNotNull() {
+            addCriterion("carPhone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneEqualTo(String value) {
+            addCriterion("carPhone =", value, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneNotEqualTo(String value) {
+            addCriterion("carPhone <>", value, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneGreaterThan(String value) {
+            addCriterion("carPhone >", value, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneGreaterThanOrEqualTo(String value) {
+            addCriterion("carPhone >=", value, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneLessThan(String value) {
+            addCriterion("carPhone <", value, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneLessThanOrEqualTo(String value) {
+            addCriterion("carPhone <=", value, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneLike(String value) {
+            addCriterion("carPhone like", value, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneNotLike(String value) {
+            addCriterion("carPhone not like", value, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneIn(List<String> values) {
+            addCriterion("carPhone in", values, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneNotIn(List<String> values) {
+            addCriterion("carPhone not in", values, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneBetween(String value1, String value2) {
+            addCriterion("carPhone between", value1, value2, "carphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarphoneNotBetween(String value1, String value2) {
+            addCriterion("carPhone not between", value1, value2, "carphone");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

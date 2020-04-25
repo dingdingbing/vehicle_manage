@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>司机个人信息</title>
+  <title>SB Admin 2 - Tables</title>
 
   <!-- Custom fonts for this template -->
   <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -53,60 +53,35 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">司机个人信息</h6>
-
+              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>司机编号</th>
-                      <th>姓名</th>
-                      <th>性别</th>
-                      <th>年龄</th>
-                      <th>出生日期</th>
-                      <th>驾照</th>
-                      <th>驾龄</th>
-                      <th>住址</th>
-                      <th>考核</th>
-                      <th>操作</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Gender</th>
+                      <th>Department</th>
+                      <th>birthday</th>
+                      <th>Age</th>
+                      <th>Operation</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>司机编号</th>
-                      <th>姓名</th>
-                      <th>性别</th>
-                      <th>年龄</th>
-                      <th>出生日期</th>
-                      <th>驾照</th>
-                      <th>驾龄</th>
-                      <th>住址</th>
-                      <th>考核</th>
-                      <th>操作</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Gender</th>
+                      <th>Department</th>
+                      <th>birthday</th>
+                      <th>Age</th>
+                      <th>Operation</th>
                     </tr>
                   </tfoot>
                   <tbody >
-                    <tr th:each="driver:${drivers}">
-                      <td th:text="${driver.getDriverid()}"> </td>
-                      <td th:text="${driver.getDrivername()}"> </td>
-                      <td th:if="${driver.getSex() eq 1}" th:text="男"> </td>
-                      <td th:if="${driver.getSex() eq 0}" th:text="女"> </td>
-                      <td th:text="${driver.getDriverage()}"> </td>
-                      <td th:text="${#dates.format(driver.getBirthday(),'yyyy-MM-dd')}"> </td>
-                      <td th:text="${driver.getLicense()}"> </td>
-                      <td th:text="${driver.getDrivingage()}"> </td>
-                      <td th:text="${driver.getAddress()}"> </td>
-                      <td th:text="${driver.getAssessment()}"> </td>
 
-                      <td >
-                        <a th:href="@{/driver/add}" class="btn btn-sm btn-success">新增</a>
-                        <a th:href="@{/driver/edit/}+${driver.driverid}" class="btn btn-sm btn-primary">编辑</a>
-                        <button th:value="${driver.driverid}"  class="btn btn-sm btn-danger deleteDriver">删除</button>
-
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -157,37 +132,6 @@
 
   <!-- Page level custom scripts -->
   <script th:src="@{/js/demo/datatables-demo.js}"></script>
-
-  <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
-  <script>
-    layui.use(['layer','jquery'],function() {
-      layer = layui.layer;
-      $ = layui.jquery;
-
-      $(".deleteDriver").click(function () {
-        $.post("/driver/delete/" + $(this).val(), function (d) {
-          if (d.code == 0) {
-            layer.msg("编号为" + d.data + "的" + d.msg, {icon: 1,time:1500});
-            setTimeout(function () {
-              window.location.reload();
-            },1500);
-
-          } else {
-            layer.msg("删除失败", {icon: 2});
-          }
-        })
-      });
-    });
-
-    window.onblur = function() {
-      document.title = "离开页面时的Title～(●￣(ｴ)￣●)";
-    };
-    window.onfocus = function() {
-      document.title = "焦点在页面内时的Title";
-    };
-
-
-  </script>
 
 </body>
 

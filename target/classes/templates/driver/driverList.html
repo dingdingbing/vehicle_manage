@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>司机个人信息</title>
+  <title>司机个人信息列表</title>
 
   <!-- Custom fonts for this template -->
   <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -53,7 +53,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">司机个人信息</h6>
+              <h6 class="m-0 font-weight-bold text-primary">司机列表</h6>
 
             </div>
             <div class="card-body">
@@ -104,7 +104,6 @@
                         <a th:href="@{/driver/add}" class="btn btn-sm btn-success">新增</a>
                         <a th:href="@{/driver/edit/}+${driver.driverid}" class="btn btn-sm btn-primary">编辑</a>
                         <button th:value="${driver.driverid}"  class="btn btn-sm btn-danger deleteDriver">删除</button>
-
                       </td>
                     </tr>
                   </tbody>

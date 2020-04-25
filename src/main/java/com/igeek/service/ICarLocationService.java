@@ -8,4 +8,5 @@ public interface ICarLocationService {
 
     List<Carlocation> list();
 
+    Carlocation getLocation(Integer id);
 }

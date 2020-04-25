@@ -166,29 +166,33 @@
                             <tr>
                                 <td>
                                     <div class="layui-upload-list">
-                                        <input type="hidden" id="pic1" name="pic1">
-                                        <img class="layui-upload-img" id="demo1" style="width: 100%;height: auto">
+                                        <input type="hidden" id="sfzzm" name="sfzzm" th:value="${driver.getSfzzm()}">
+                                        <img class="layui-upload-img" id="demo1" style="width: 100%;height: auto"
+                                             th:src="${driver.getSfzzm() == '' ? '/img/noThumb.jpg':'http://' +driver.getSfzzm()}">
                                         <p id="demoText1"></p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="layui-upload-list">
-                                        <input type="hidden" id="pic2" name="pic2">
-                                        <img class="layui-upload-img" id="demo2" style="width: 100%;height: auto">
+                                        <input type="hidden" id="sfzfm" name="sfzfm" th:value="${driver.getSfzfm()}">
+                                        <img class="layui-upload-img" id="demo2" style="width: 100%;height: auto"
+                                             th:src="${driver.getSfzfm() == '' ? '/img/noThumb.jpg':'http://' +driver.getSfzfm()}">
                                         <p id="demoText2"></p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="layui-upload-list">
-                                        <input type="hidden" id="pic3" name="pic3">
-                                        <img class="layui-upload-img" id="demo3" style="width: 100%;height: auto">
+                                        <input type="hidden" id="jszzm" name="jszzm" th:value="${driver.getJszzm()}">
+                                        <img class="layui-upload-img" id="demo3" style="width: 100%;height: auto"
+                                             th:src="${driver.getJszzm() == '' ? '/img/noThumb.jpg':'http://' + driver.getJszzm()}">
                                         <p id="demoText3"></p>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="layui-upload-list">
-                                        <input type="hidden" id="pic4" name="pic4">
-                                        <img class="layui-upload-img" id="demo4" style="width: 100%;height: auto">
+                                        <input type="hidden" id="jszfm" name="jszfm" th:value="${driver.getJszfm()}">
+                                        <img class="layui-upload-img" id="demo4" style="width: 100%;height: auto"
+                                             th:src="${driver.getJszfm() == '' ? '/img/noThumb.jpg':'http://' +driver.getJszfm()}">
                                         <p id="demoText4"></p>
                                     </div>
                                 </td>
@@ -267,7 +271,7 @@
                 //预读本地文件示例，不支持ie8
                 obj.preview(function (index, file, result) {
                     $('#demo1').attr('src', result); //图片链接（base64）
-                    $('#pic1').attr('value', result); //赋值
+                   // $('#sfzzm').attr('value', result); //赋值
                 });
             }
             , done: function (res) {
@@ -275,6 +279,8 @@
                 if (res.code > 0) {
                     return layer.msg('上传失败');
                 }
+                $('#sfzzm').attr('value', res.data);
+                return layer.msg('身份证正面照片上传成功');
                 //上传成功
 
             }
@@ -296,7 +302,7 @@
                 //预读本地文件示例，不支持ie8
                 obj.preview(function (index, file, result) {
                     $('#demo2').attr('src', result); //图片链接（base64）
-                    $('#pic2').attr('value', result); //赋值
+                   // $('#sfzfm').attr('value', result); //赋值
                 });
             }
             , done: function (res) {
@@ -304,6 +310,8 @@
                 if (res.code > 0) {
                     return layer.msg('上传失败');
                 }
+                $('#sfzfm').attr('value', res.data);
+                return layer.msg('身份证反面照片上传成功');
                 //上传成功
             }
             , error: function () {
@@ -324,7 +332,7 @@
                 //预读本地文件示例，不支持ie8
                 obj.preview(function (index, file, result) {
                     $('#demo3').attr('src', result); //图片链接（base64）
-                    $('#pic3').attr('value', result); //赋值
+                  //  $('#jszzm').attr('value', result); //赋值
                 });
             }
             , done: function (res) {
@@ -332,6 +340,8 @@
                 if (res.code > 0) {
                     return layer.msg('上传失败');
                 }
+                $('#jszzm').attr('value', res.data);
+                return layer.msg('驾驶证正面照片上传成功');
                 //上传成功
             }
             , error: function () {
@@ -352,7 +362,7 @@
                 //预读本地文件示例，不支持ie8
                 obj.preview(function (index, file, result) {
                     $('#demo4').attr('src', result); //图片链接（base64）
-                    $('#pic4').attr('value', result); //赋值
+                 //   $('#jszfm').attr('value', result); //赋值
                 });
             }
             , done: function (res) {
@@ -360,6 +370,8 @@
                 if (res.code > 0) {
                     return layer.msg('上传失败');
                 }
+                $('#jszfm').attr('value', res.data);
+                return layer.msg('驾驶证反面照片上传成功');
                 //上传成功
             }
             , error: function () {
@@ -376,6 +388,93 @@
     $(function () {
         $("input").attr("autocomplete", "off");
     });
+</script>
+
+<script th:src="@{/vendor/jquery/jquery.validate.js}"></script>
+
+
+<script type="text/javascript">
+    $.validator.setDefaults({
+        showErrors: function (map, list) {
+
+            this.currentElements.removeAttr("title").removeClass("ui-state-highlight").removeClass("error");
+
+            $.each(list, function (index, error) {
+                $(error.element)
+                    .attr("title", error.message).addClass("ui-state-highlight").addClass("error");
+                $(error.element).tooltip({
+                    openn: true,
+                    position: {
+                        my: "left top",
+                        at: "right+5 top-5"
+                    }
+                });
+            });
+        }
+    });
+    $.extend($.validator.messages, {
+        required: "必选字段",
+        remote: "请修正该字段",
+        email: "请输入正确格式的电子邮件",
+        url: "请输入合法的网址",
+        date: "请输入合法的日期",
+        dateISO: "请输入合法的日期 (ISO).",
+        number: "请输入合法的数字",
+        digits: "只能输入整数",
+        creditcard: "请输入合法的信用卡号",
+        equalTo: "请再次输入相同的值",
+        accept: "请输入拥有合法后缀名的字符串",
+        maxlength: $.validator.format("请输入一个长度最多是 {0} 的字符串"),
+        minlength: $.validator.format("请输入一个长度最少是 {0} 的字符串"),
+        rangelength: $.validator.format("请输入一个长度介于 {0} 和 {1} 之间的字符串"),
+        range: $.validator.format("请输入一个介于 {0} 和 {1} 之间的值"),
+        max: $.validator.format("请输入一个最大为 {0} 的值"),
+        min: $.validator.format("请输入一个最小为 {0} 的值")
+    });
+    $("#driverAdd").validate({
+        rules: {
+            drivername: {
+                required: true,
+                maxlength: 5,
+                minlength: 1
+            },
+            driverage: {
+                required: true,
+                digits: true,
+                max: 100,
+                min: 22
+            },
+            drivingage: {
+                required: true,
+                digits: true,
+                min: 1,
+                max: 70
+            },
+            license: {
+                required: true
+            }
+        },
+        messages: {
+            drivername: {
+                required: "司机名不能为空"
+            },
+            driverage: {
+                required: "司机年龄不能为空,且必须为整数"
+            },
+            drivingage: {
+                required: "司机驾龄不能为空"
+            },
+            license: {
+                required: "司机驾照等级不能为空"
+            }
+        },
+
+        submitHandler: function (form) {
+            //验证通过后进行注册
+            form.submit();
+        }
+    })
+
 </script>
 </body>
 

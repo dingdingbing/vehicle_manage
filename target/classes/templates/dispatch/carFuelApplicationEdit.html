@@ -86,7 +86,7 @@
                                 <td class="fieldLable" rowspan="6" align="center">缩略图</td>
                                 <td id="dbf.thumbnails" style="PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px" rowspan="6" dbf.source="file.image">
                                     <div id="e.dbf.thumbnails">
-                                        <img class="radius" style="WIDTH: 300px;height: 225px" border="0" id="imgs" th:src="${!#strings.isEmpty(fuel.getVoucher())?'http://'+fuel.getVoucher():'/img/noThumb.jpg'}" >
+                                        <a th:href="${!#strings.isEmpty(fuel.getVoucher())?'http://'+fuel.getVoucher():'/img/noThumb.jpg'}" target="_blank"><img class="radius" style="WIDTH: 300px;height: 225px" border="0" id="imgs" th:src="${!#strings.isEmpty(fuel.getVoucher())?'http://'+fuel.getVoucher():'/img/noThumb.jpg'}" ></a>
                                     </div>
                                     <input type="hidden" name="voucher" th:value="${fuel.getVoucher()}" id="url_test">
                                     <br>
